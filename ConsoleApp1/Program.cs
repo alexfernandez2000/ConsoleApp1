@@ -51,7 +51,7 @@ namespace ConsoleApp1
                 }
 
             }
-        }
+        }        
         #region Word Comparer
         private static void WordComparer()
         {
@@ -59,25 +59,30 @@ namespace ConsoleApp1
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
+                
+                string word = ReadConsoleWord("Word to compare");
+                string comparedWord = ReadConsoleWord("Word to be compared");
+
+                if (IsWordBiggerOrEqual(word,comparedWord))
+                    Console.WriteLine($"Word {word} is bigger or equals than {comparedWord}");
                 else
-                {
-                    string word = ReadConsoleWord("Word to compare");
-                    string comparedWord = ReadConsoleWord("Word to be compared");
-                    if (CompareWords(word,comparedWord))
-                        Console.WriteLine($"Word {word} is bigger or equals than {comparedWord}");
-                    else
-                        Console.WriteLine($"Word {comparedWord} is bigger than {word}");
-                }
+                    Console.WriteLine($"Word {comparedWord} is bigger than {word}");
+                
             }
         }
-        private static bool CompareWords(string word, string comparedWord)
+        private static bool IsWordBiggerOrEqual(string word, string comparedWord)
         {
-            //Tiene en cuenta si es mayuscula o minuscula.
-                for (int index = 0; index < word.Length; index++)
-                {
-                    if (word[index] > comparedWord[index])
-                        return false;
-                }
+            if (word.Length <= comparedWord.Length) 
+                return IsRangeWordBiggerOrEqual(word,comparedWord,word.Length);
+
+            return !IsRangeWordBiggerOrEqual(word, comparedWord, comparedWord.Length);
+        }
+
+        private static bool IsRangeWordBiggerOrEqual(string word, string comparedWord,int range)
+        {
+            for (int i = 0; i < range; i++)
+                if (word[i] > comparedWord[i])
+                    return false;
             return true;
         }
         #endregion
@@ -115,15 +120,23 @@ namespace ConsoleApp1
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
-                else
-                {
-                    int number = int.Parse(ReadConsoleWord("Write the number you want to pow."));
-                    int pow = int.Parse(ReadConsoleWord("Write the pow value"));
-                    Console.WriteLine($"The number {number} to the pow of {pow} is {calculatePow(number,pow)}");
-                }
+                Console.WriteLine("Write the base number.");
+                int number = GetInt();
+                Console.WriteLine("Write the exponent value.");
+                int pow = GetInt();
+                Console.WriteLine($"The number {number} to the pow of {pow} is {CalculatePow(number,pow)}");
             }
         }
-        private static int calculatePow(int number,int pow)
+        private static int GetInt()
+        {
+            while (true)
+            {
+                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
+                    return number;
+                Console.WriteLine("Invalid number");
+            }
+        }
+        private static int CalculatePow(int number,int pow)
         {
             int result = 1;
             for (int index = 0; index < pow; index++)
@@ -181,24 +194,24 @@ namespace ConsoleApp1
                     DateTime date = GetDate();
                     Console.WriteLine("Insert date to compare");
                     DateTime dateToComparte = GetDate();
-                    @bool comparation = CompareDate(date, dateToComparte);
-                    if (comparation == @bool.IsBigger)
+                    eCompare comparation = CompareDate(date, dateToComparte);
+                    if (comparation == eCompare.IsBigger)
                         Console.WriteLine($"Date {date} is bigger than {dateToComparte}");
-                    else if (comparation == @bool.IsLower)
+                    else if (comparation == eCompare.IsLower)
                         Console.WriteLine($"Date {date} is lower than {dateToComparte}");
-                    else if (comparation == @bool.IsEquals)
+                    else if (comparation == eCompare.IsEquals)
                         Console.WriteLine($"Date {date} is equals than {dateToComparte}");
                 }
             }
         }
-        private static @bool CompareDate(DateTime date, DateTime dateToCompare)
+        private static eCompare CompareDate(DateTime date, DateTime dateToCompare)
         {
-            @bool result = CompareInt(date.Year, dateToCompare.Year);
+            eCompare result = CompareInt(date.Year, dateToCompare.Year);
 
-            if (result == @bool.IsEquals)
+            if (result == eCompare.IsEquals)
             {
                 result = CompareInt(date.Month, dateToCompare.Month);
-                if (result == @bool.IsEquals)
+                if (result == eCompare.IsEquals)
                     result = CompareInt(date.Day, dateToCompare.Day);
             }
 
@@ -272,7 +285,7 @@ namespace ConsoleApp1
         }
         #endregion
         #region Tools
-        public enum @bool
+        public enum eCompare
         {
             IsLower=1,
             IsBigger=2,
@@ -283,16 +296,16 @@ namespace ConsoleApp1
             Console.WriteLine(text);
             return Console.ReadLine();
         }
-        private static @bool CompareInt(int value, int valueToCompare)
+        private static eCompare CompareInt(int value, int valueToCompare)
         {
             if (value > valueToCompare)
-                return @bool.IsBigger;
+                return eCompare.IsBigger;
             else
             {
                 if (value == valueToCompare)
-                    return @bool.IsEquals;
+                    return eCompare.IsEquals;
                 else
-                    return @bool.IsLower;
+                    return eCompare.IsLower;
             }
         }
 
