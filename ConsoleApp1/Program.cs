@@ -19,7 +19,8 @@ namespace ConsoleApp1
 3: Palindrome
 4: Pow
 5: Enter number division
-6: Word comparer");
+6: Word comparer
+7: Text Inversor");
                 switch (option)
                 {
                     case "1":
@@ -40,6 +41,9 @@ namespace ConsoleApp1
                     case "6":
                         WordComparer();
                         break;
+                    case "7":
+                        TextInversor();
+                        break;
 
                     default:
                         option = "end";
@@ -51,7 +55,37 @@ namespace ConsoleApp1
                 }
 
             }
-        }        
+        }
+
+
+        #region Text Inversion
+        private static void TextInversor()
+        {
+            while (true)
+            {
+                if (ReadConsoleWord("Continue? Insert n to leave") == "n")
+                    break;
+
+                string word = ReadConsoleWord("Write a word");
+                Console.WriteLine($@"Word : {word}
+Inverted Word : {InverseText(word)}");
+
+            }
+        }
+
+        private static string InverseText(string text)
+        {
+            string inversedText = "";
+
+            foreach (char charecter in text)
+            {
+                inversedText = charecter + inversedText;
+            }
+
+            return inversedText;
+        }
+
+        #endregion
         #region Word Comparer
         private static void WordComparer()
         {
@@ -194,24 +228,24 @@ namespace ConsoleApp1
                     DateTime date = GetDate();
                     Console.WriteLine("Insert date to compare");
                     DateTime dateToComparte = GetDate();
-                    eCompare comparation = CompareDate(date, dateToComparte);
-                    if (comparation == eCompare.IsBigger)
+                    ECompare comparation = CompareDate(date, dateToComparte);
+                    if (comparation == ECompare.IsBigger)
                         Console.WriteLine($"Date {date} is bigger than {dateToComparte}");
-                    else if (comparation == eCompare.IsLower)
+                    else if (comparation == ECompare.IsLower)
                         Console.WriteLine($"Date {date} is lower than {dateToComparte}");
-                    else if (comparation == eCompare.IsEquals)
+                    else if (comparation == ECompare.IsEquals)
                         Console.WriteLine($"Date {date} is equals than {dateToComparte}");
                 }
             }
         }
-        private static eCompare CompareDate(DateTime date, DateTime dateToCompare)
+        private static ECompare CompareDate(DateTime date, DateTime dateToCompare)
         {
-            eCompare result = CompareInt(date.Year, dateToCompare.Year);
+            ECompare result = CompareInt(date.Year, dateToCompare.Year);
 
-            if (result == eCompare.IsEquals)
+            if (result == ECompare.IsEquals)
             {
                 result = CompareInt(date.Month, dateToCompare.Month);
-                if (result == eCompare.IsEquals)
+                if (result == ECompare.IsEquals)
                     result = CompareInt(date.Day, dateToCompare.Day);
             }
 
@@ -285,7 +319,7 @@ namespace ConsoleApp1
         }
         #endregion
         #region Tools
-        public enum eCompare
+        public enum ECompare
         {
             IsLower=1,
             IsBigger=2,
@@ -296,16 +330,16 @@ namespace ConsoleApp1
             Console.WriteLine(text);
             return Console.ReadLine();
         }
-        private static eCompare CompareInt(int value, int valueToCompare)
+        private static ECompare CompareInt(int value, int valueToCompare)
         {
             if (value > valueToCompare)
-                return eCompare.IsBigger;
+                return ECompare.IsBigger;
             else
             {
                 if (value == valueToCompare)
-                    return eCompare.IsEquals;
+                    return ECompare.IsEquals;
                 else
-                    return eCompare.IsLower;
+                    return ECompare.IsLower;
             }
         }
 
