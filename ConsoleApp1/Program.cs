@@ -12,6 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             string option;
+
             while (true)
             {
                 option = ReadConsoleWord(@"Write the number of the exercice you want to execute:
@@ -66,9 +67,7 @@ namespace ConsoleApp1
                         break;
                 }
                 if (option.Equals("end"))
-                {
                     break;
-                }
 
             }
         }
