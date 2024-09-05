@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 
 namespace ConsoleApp1
@@ -71,56 +72,59 @@ namespace ConsoleApp1
 
             }
         }
+        #region EvenNumbers
         private static void EvenNumbers()
         {
-            Console.WriteLine($"For result:{ EvenNumbersFor(20)}");
-            Console.WriteLine($"While result:{EvenNumbersWhile(20)}");
-            Console.WriteLine($"DoWhile result:{EvenNumbersDoWhile(20)}");
+            EvenNumbersFor(20);
+            EvenNumbersWhile(20);
+            EvenNumbersDoWhile(20);
         }
-
         private static IEnumerable<int> EvenNumbersFor(int maxRange)
         {
             List<int> numbers = new List<int>();
+
             for (int index = 0; index < maxRange; index++)
-                if (index%2==0)
+                if (index % 2 == 0)
                     numbers.Add(index);
+
             return numbers;
         }
         private static IEnumerable<int> EvenNumbersWhile(int maxRange)
         {
-            int count=0;
+            int count = 0;
             List<int> numbers = new List<int>();
 
-            while (count<maxRange)
+            while (count < maxRange)
             {
                 if (count % 2 == 0)
                     numbers.Add(count);
                 count++;
             }
+
             return numbers;
         }
         private static IEnumerable<int> EvenNumbersDoWhile(int maxRange)
         {
             int count = 0;
             List<int> numbers = new List<int>();
+
             do
             {
                 if (count % 2 == 0)
                     numbers.Add(count);
                 count++;
             } while (count < maxRange);
+
             return numbers;
         }
-
-        #region EvenNumbers
-
         #endregion
-        #region FindTheNumeber
+        #region FindTheNumber
         private static void FindTheNumber()
         {
             Random random = new Random();
             int winerNuber =random.Next(1,21);
             int insertedValue;
+
             while (true)
             {
                 Console.WriteLine("Insert a value between 1 an 20");
@@ -141,6 +145,7 @@ namespace ConsoleApp1
         private static void NumberInversor()
         {
             int value;
+
             while (true)
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
@@ -162,14 +167,15 @@ namespace ConsoleApp1
             return invertedNumber;
         }
         #endregion
-        #region Tres en raya
+        #region TikTakToe
 
-        //Las fichas del los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
+        //Las fichas de los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
         private static bool?[,] board;
         private static void TikTakToe()
         {
-            board= new bool?[3,3];
             bool player = true;
+
+            board = new bool?[3, 3];
             ShowBoard();
             while (true)
             {
@@ -219,19 +225,20 @@ namespace ConsoleApp1
 
         private static bool IsDiagonalWin(bool player)
         {
-            bool firstDiagona = true; 
+            bool firstDiagonal = true; 
             bool secondDiagonal = true;
             int tableLenght = board.GetLength(0)-1;
+            int result;
             for (int line = 0; line < tableLenght+1; line++)
             {
                 if (board[line, line] != player)
-                    firstDiagona = false;
-                int result = tableLenght - line;
+                    firstDiagonal = false;
+                result = tableLenght - line;
                 if (board[tableLenght - line,line]!=player)
                     secondDiagonal=false;
             }
             
-            if (!firstDiagona && !secondDiagonal)
+            if (!firstDiagonal && !secondDiagonal)
                 return false;
             return true;
         }
@@ -264,18 +271,19 @@ namespace ConsoleApp1
 
         private static void ShowBoard()
         {
+            string textBoard;
             ShowIntermediateLine(board.GetLength(0));
             for (int line = 0; line < board.GetLength(0); line++)
             {
-                string text = "";
+                textBoard = "";
                 for (int column = 0; column < board.GetLength(1); column++)
                 {
                     if (column==0)
-                        text += "|";
-                    text += board[line, column] == null ? " " : board[line, column] == true ? "O" : "X";
-                    text += "|";
+                        textBoard += "|";
+                    textBoard += board[line, column] == null ? " " : board[line, column] == true ? "O" : "X";
+                    textBoard += "|";
                 }
-                Console.WriteLine(text);
+                Console.WriteLine(textBoard);
                 ShowIntermediateLine(board.GetLength(0));
             }
         }
@@ -283,22 +291,21 @@ namespace ConsoleApp1
         private static void ShowIntermediateLine(int lenght)
         {
             for (int i = 0; i < lenght*2+1; i++)
-            {
-                Console.Write("_");
-            }
+                Console.Write("-");
             Console.WriteLine();
         }
         private static (int column, int line) AskPosition()
         {
+            int column;
+            int line;
             while (true)
             {
                 Console.WriteLine("Insert column value");
-                int column = GetInt();
+                column = GetInt();
                 Console.WriteLine("Insert line value");
-                int line = GetInt();
+                line = GetInt();
                 if (IsInsideBoard(column, line) && board[line,column]==null)
                     return (column, line);
-
                 Console.WriteLine("Invalid position");
             }
         }
@@ -313,12 +320,13 @@ namespace ConsoleApp1
         #region Text Inversion
         private static void TextInversor()
         {
+            string word;
+
             while (true)
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
-
-                string word = ReadConsoleWord("Write a word");
+                word = ReadConsoleWord("Write a word");
                 Console.WriteLine($@"Word : {word}
 Inverted Word : {InverseText(word)}");
 
@@ -341,19 +349,21 @@ Inverted Word : {InverseText(word)}");
         #region Word Comparer
         private static void WordComparer()
         {
+            string word;
+            string comparedWord;
+
             while (true)
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
                 
-                string word = ReadConsoleWord("Word to compare");
-                string comparedWord = ReadConsoleWord("Word to be compared");
+                word = ReadConsoleWord("Word to compare");
+                comparedWord = ReadConsoleWord("Word to be compared");
 
                 if (IsWordBiggerOrEqual(word,comparedWord))
                     Console.WriteLine($"Word {word} is bigger or equals than {comparedWord}");
                 else
                     Console.WriteLine($"Word {comparedWord} is bigger than {word}");
-                
             }
         }
         private static bool IsWordBiggerOrEqual(string word, string comparedWord)
@@ -375,14 +385,17 @@ Inverted Word : {InverseText(word)}");
         #region Enter number division
         private static void EnterNumberDivision()
         {
+            int dividend;
+            int divisior;
+
             while (true)
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
                 else
                 {
-                    int dividend = int.Parse(ReadConsoleWord("Insert dividend"));
-                    int divisior = int.Parse(ReadConsoleWord("Insert divisor"));
+                    dividend = int.Parse(ReadConsoleWord("Insert dividend"));
+                    divisior = int.Parse(ReadConsoleWord("Insert divisor"));
                     Console.WriteLine($"The result from the division {dividend} / {divisior} equals {EnterDivision(dividend,divisior)}");
                 }
             }
@@ -390,6 +403,7 @@ Inverted Word : {InverseText(word)}");
         private static int EnterDivision(int dividend, int divisor) 
         {
             int result=0;
+
             while (divisor <= dividend)
             {
                 dividend = dividend - divisor;
@@ -402,14 +416,16 @@ Inverted Word : {InverseText(word)}");
         #region Calculate pow
         private static void CalculatePowExercice()
         {
+            int number;
+            int pow;
             while (true)
             {
                 if (ReadConsoleWord("Continue? Insert n to leave") == "n")
                     break;
                 Console.WriteLine("Write the base number.");
-                int number = GetInt();
+                number = GetInt();
                 Console.WriteLine("Write the exponent value.");
-                int pow = GetInt();
+                pow = GetInt();
                 Console.WriteLine($"The number {number} to the pow of {pow} is {CalculatePow(number,pow)}");
             }
         }
@@ -417,22 +433,21 @@ Inverted Word : {InverseText(word)}");
         {
             int result = 1;
             for (int index = 0; index < pow; index++)
-            {
-                result=result*number;
-            }        
+                result=result*number;       
             return result;
         }
         #endregion
         #region Palindrome
         private static void StartingPalindromeExcercice()
         {
+            string word;
             while (true)
             {
                 if (ReadConsoleWord("Write n to leave or a different one to continue.") == "n")
                     break;
                 else
                 {
-                    string word = ReadConsoleWord("Insert word");
+                    word = ReadConsoleWord("Insert word");
                     if (IsPalindrome(word))
                         Console.WriteLine($"Word: {word} is palindrome");
                     else
@@ -508,6 +523,8 @@ Inverted Word : {InverseText(word)}");
         #region EjercicioLowerCamel
         private static void StartExerciceLowerCamelCase()
         {
+            string camelOrLower;
+            string convertedWord;
             bool end = true;
             while (end)
             {
@@ -516,8 +533,7 @@ Inverted Word : {InverseText(word)}");
                 if (word != "end")
                 {
                     Console.WriteLine("Escriba c para CamelCase otro caracter para LowerCase");
-                    string camelOrLower = Console.ReadLine();
-                    string convertedWord;
+                    camelOrLower = Console.ReadLine();
                     if (camelOrLower == "c")
                         convertedWord = ConvertStringToCamelCase(word, true);
                     else
@@ -587,9 +603,10 @@ Inverted Word : {InverseText(word)}");
         }
         private static int GetInt()
         {
+            int number;
             while (true)
             {
-                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
+                if (int.TryParse(ReadConsoleWord("Insert number"), out number))
                     return number;
                 Console.WriteLine("Invalid number");
             }
