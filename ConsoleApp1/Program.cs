@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace ConsoleApp1
 {
@@ -20,7 +17,8 @@ namespace ConsoleApp1
 4: Pow
 5: Enter number division
 6: Word comparer
-7: Text Inversor");
+7: Text Inversor
+8: Tres en raya");
                 switch (option)
                 {
                     case "1":
@@ -44,6 +42,10 @@ namespace ConsoleApp1
                     case "7":
                         TextInversor();
                         break;
+                    case "8":
+                        TresEnRaya();
+                        break;
+
 
                     default:
                         option = "end";
@@ -56,6 +58,168 @@ namespace ConsoleApp1
 
             }
         }
+        #region Tres en raya
+        //Las fichas del los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
+        private static void TresEnRaya()
+        {
+            bool?[,] board= new bool?[3,3];
+            bool player = true;
+            ShowBoard(board);
+            while (true)
+            {
+                (int column,int line) tokenPosition = AskPosition(board);
+                board[tokenPosition.line,tokenPosition.column] = player;
+                ShowBoard(board);
+                if (PlayerWin(board, player))
+                {
+                    ShowResult(player);
+                    break;
+                }
+                if (isDraw(board))
+                {
+                    ShowResult(null);
+                    break;
+                }
+                player =!player;
+            }
+        }
+
+        private static void ShowResult(bool? winner)
+        {
+            if (winner==null)
+                Console.WriteLine("Draw");
+            else
+                Console.WriteLine($"Player {winner : 1,2} win");
+        }
+
+        private static bool isDraw(bool?[,] board)
+        {
+            for (int line = 0; line < board.GetLength(0); line++)
+                for (int column = 0; column < board.GetLength(1); column++)
+                    if (board[line, column] == null)
+                        return false;
+            return true;
+        }
+
+
+        private static bool PlayerWin(bool?[,] board,bool player)
+        {
+            if (!IsVertialWin(board,player)&&!IsHorizontalWin(board, player)&&!IsDiagonalWin(board, player))
+                return false;
+            return true;
+        }
+
+        private static bool IsDiagonalWin(bool?[,] board,bool player)
+        {
+            bool firstDiagona = true; 
+            bool secondDiagonal = true;
+            int tableLenght = board.GetLength(0)-1;
+            for (int line = 0; line < tableLenght+1; line++)
+            {
+                if (board[line, line] != player)
+                    firstDiagona = false;
+                int result = tableLenght - line;
+                if (board[tableLenght - (tableLenght - line),line]!=player)
+                    secondDiagonal=false;
+            }
+            
+            if (!firstDiagona && !secondDiagonal)
+                return false;
+            return true;
+        }
+
+        private static bool IsVertialWin(bool?[,] board,bool player)
+        {
+            for (int line = 0; line < board.GetLength(0); line++)
+            {
+                bool isWin = true;
+
+                for (int column = 0; column < board.GetLength(1); column++)
+                {
+                    if (board[line, column] != player)
+                    {
+                        isWin = false;
+                        break;
+                    }
+                }
+                if (isWin)
+                    return true;
+                
+            }
+            
+            return false;
+        }
+
+        private static bool IsHorizontalWin(bool?[,] board,bool player)
+        {
+            for (int column = 0; column < board.GetLength(0); column++)
+            {
+                bool isWin = true;
+
+                for (int line = 0; line < board.GetLength(1); line++)
+                {
+                    if (board[column, line] != player)
+                    {
+                        isWin = false;
+                        break;
+                    }
+                }
+                if (isWin)
+                    return true;
+
+            }
+
+            return false;
+        }
+
+        private static void ShowBoard(bool?[,] board)
+        {
+            ShowIntermediateLine(board.GetLength(0));
+            for (int line = 0; line < board.GetLength(0); line++)
+            {
+                string text = "";
+                for (int column = 0; column < board.GetLength(1); column++)
+                {
+                    if (column==0)
+                        text += "|";
+                    text += board[line, column] == null ? " " : board[line, column] == true ? "O" : "X";
+                    text += "|";
+                }
+                Console.WriteLine(text);
+                ShowIntermediateLine(board.GetLength(0));
+            }
+        }
+
+        private static void ShowIntermediateLine(int lenght)
+        {
+            for (int i = 0; i < lenght*2+1; i++)
+            {
+                Console.Write("_");
+            }
+            Console.WriteLine();
+        }
+        private static (int column, int line) AskPosition(bool?[,] board)
+        {
+            while (true)
+            {
+                Console.WriteLine("Insert column value");
+                int column = GetInt();
+                Console.WriteLine("Insert line value");
+                int line = GetInt();
+                if (IsInsideBoard(board, column, line) && board[line,column]==null)
+                    return (column, line);
+
+                Console.WriteLine("Invalid position");
+            }
+        }
+
+        private static bool IsInsideBoard(bool?[,] board,int column,int line)
+        {
+            if ((board.GetLength(0) > line && line >= 0) && (board.GetLength(1) > column && column >= 0))
+                return true;
+            return false;
+        }
+        #endregion
 
 
         #region Text Inversion
@@ -159,15 +323,6 @@ Inverted Word : {InverseText(word)}");
                 Console.WriteLine("Write the exponent value.");
                 int pow = GetInt();
                 Console.WriteLine($"The number {number} to the pow of {pow} is {CalculatePow(number,pow)}");
-            }
-        }
-        private static int GetInt()
-        {
-            while (true)
-            {
-                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
-                    return number;
-                Console.WriteLine("Invalid number");
             }
         }
         private static int CalculatePow(int number,int pow)
@@ -340,6 +495,15 @@ Inverted Word : {InverseText(word)}");
                     return ECompare.IsEquals;
                 else
                     return ECompare.IsLower;
+            }
+        }
+        private static int GetInt()
+        {
+            while (true)
+            {
+                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
+                    return number;
+                Console.WriteLine("Invalid number");
             }
         }
 
