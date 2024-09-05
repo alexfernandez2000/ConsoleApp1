@@ -18,7 +18,7 @@ namespace ConsoleApp1
 5: Enter number division
 6: Word comparer
 7: Text Inversor
-8: Tres en raya");
+8: Tic Tac Toe");
                 switch (option)
                 {
                     case "1":
@@ -43,7 +43,7 @@ namespace ConsoleApp1
                         TextInversor();
                         break;
                     case "8":
-                        TresEnRaya();
+                        TikTakToe();
                         break;
 
 
@@ -62,7 +62,7 @@ namespace ConsoleApp1
 
         //Las fichas del los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
         private static bool?[,] board;
-        private static void TresEnRaya()
+        private static void TikTakToe()
         {
             board= new bool?[3,3];
             bool player = true;
