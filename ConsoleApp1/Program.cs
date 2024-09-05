@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
 
 namespace ConsoleApp1
 {
@@ -18,7 +21,10 @@ namespace ConsoleApp1
 5: Enter number division
 6: Word comparer
 7: Text Inversor
-8: Tic Tac Toe");
+8: Tic Tac Toe
+9: Number Inversor
+10: Find the number
+11: Even numbers");
                 switch (option)
                 {
                     case "1":
@@ -45,8 +51,15 @@ namespace ConsoleApp1
                     case "8":
                         TikTakToe();
                         break;
-
-
+                    case "9":
+                        NumberInversor();
+                        break;
+                    case "10":
+                        FindTheNumber();
+                        break;
+                    case "11":
+                        EvenNumbers();
+                        break;
                     default:
                         option = "end";
                         break;
@@ -58,6 +71,97 @@ namespace ConsoleApp1
 
             }
         }
+        private static void EvenNumbers()
+        {
+            Console.WriteLine($"For result:{ EvenNumbersFor(20)}");
+            Console.WriteLine($"While result:{EvenNumbersWhile(20)}");
+            Console.WriteLine($"DoWhile result:{EvenNumbersDoWhile(20)}");
+        }
+
+        private static IEnumerable<int> EvenNumbersFor(int maxRange)
+        {
+            List<int> numbers = new List<int>();
+            for (int index = 0; index < maxRange; index++)
+                if (index%2==0)
+                    numbers.Add(index);
+            return numbers;
+        }
+        private static IEnumerable<int> EvenNumbersWhile(int maxRange)
+        {
+            int count=0;
+            List<int> numbers = new List<int>();
+
+            while (count<maxRange)
+            {
+                if (count % 2 == 0)
+                    numbers.Add(count);
+                count++;
+            }
+            return numbers;
+        }
+        private static IEnumerable<int> EvenNumbersDoWhile(int maxRange)
+        {
+            int count = 0;
+            List<int> numbers = new List<int>();
+            do
+            {
+                if (count % 2 == 0)
+                    numbers.Add(count);
+                count++;
+            } while (count < maxRange);
+            return numbers;
+        }
+
+        #region EvenNumbers
+
+        #endregion
+        #region FindTheNumeber
+        private static void FindTheNumber()
+        {
+            Random random = new Random();
+            int winerNuber =random.Next(1,21);
+            int insertedValue;
+            while (true)
+            {
+                Console.WriteLine("Insert a value between 1 an 20");
+                insertedValue = GetInt();
+                if (insertedValue == winerNuber)
+                {
+                    Console.WriteLine("Congratulations you found the winner number.");
+                    break;
+                }
+                else if (insertedValue > winerNuber)
+                    Console.WriteLine("Your number is bigger than winner number");
+                else
+                    Console.WriteLine("Your number is lower than winner number");
+            }
+        }
+            #endregion
+        #region Number Inversor
+        private static void NumberInversor()
+        {
+            int value;
+            while (true)
+            {
+                if (ReadConsoleWord("Continue? Insert n to leave") == "n")
+                    break;
+                value = GetInt();
+                Console.WriteLine($"Inverse value from {value} is {InverseNumber(value)}");
+            }
+        }
+        private static int InverseNumber(int number)
+        {
+            int invertedNumber=0;
+            int lastDigit;
+            while (number>0)
+            {
+                lastDigit = number % 10;
+                invertedNumber= invertedNumber * 10 + lastDigit;
+                number = number / 10;
+            }
+            return invertedNumber;
+        }
+        #endregion
         #region Tres en raya
 
         //Las fichas del los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
@@ -206,8 +310,6 @@ namespace ConsoleApp1
             return false;
         }
         #endregion
-
-
         #region Text Inversion
         private static void TextInversor()
         {
