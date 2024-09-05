@@ -59,23 +59,25 @@ namespace ConsoleApp1
             }
         }
         #region Tres en raya
+
         //Las fichas del los jugadores se representan como una bool player donde true es jugador 1 y false es jugador 2
+        private static bool?[,] board;
         private static void TresEnRaya()
         {
-            bool?[,] board= new bool?[3,3];
+            board= new bool?[3,3];
             bool player = true;
-            ShowBoard(board);
+            ShowBoard();
             while (true)
             {
-                (int column,int line) tokenPosition = AskPosition(board);
+                (int column,int line) tokenPosition = AskPosition();
                 board[tokenPosition.line,tokenPosition.column] = player;
-                ShowBoard(board);
-                if (PlayerWin(board, player))
+                ShowBoard();
+                if (PlayerWin(player))
                 {
                     ShowResult(player);
                     break;
                 }
-                if (isDraw(board))
+                if (isDraw())
                 {
                     ShowResult(null);
                     break;
@@ -88,11 +90,13 @@ namespace ConsoleApp1
         {
             if (winner==null)
                 Console.WriteLine("Draw");
+            else if ((bool)winner)
+                Console.WriteLine($"Player 1 win");
             else
-                Console.WriteLine($"Player {winner : 1,2} win");
+                Console.WriteLine($"Player 2 win");
         }
 
-        private static bool isDraw(bool?[,] board)
+        private static bool isDraw()
         {
             for (int line = 0; line < board.GetLength(0); line++)
                 for (int column = 0; column < board.GetLength(1); column++)
@@ -102,14 +106,14 @@ namespace ConsoleApp1
         }
 
 
-        private static bool PlayerWin(bool?[,] board,bool player)
+        private static bool PlayerWin(bool player)
         {
-            if (!IsVertialWin(board,player)&&!IsHorizontalWin(board, player)&&!IsDiagonalWin(board, player))
+            if (!IsLineWin(player)&&!IsDiagonalWin(player))
                 return false;
             return true;
         }
 
-        private static bool IsDiagonalWin(bool?[,] board,bool player)
+        private static bool IsDiagonalWin(bool player)
         {
             bool firstDiagona = true; 
             bool secondDiagonal = true;
@@ -119,7 +123,7 @@ namespace ConsoleApp1
                 if (board[line, line] != player)
                     firstDiagona = false;
                 int result = tableLenght - line;
-                if (board[tableLenght - (tableLenght - line),line]!=player)
+                if (board[tableLenght - line,line]!=player)
                     secondDiagonal=false;
             }
             
@@ -128,51 +132,33 @@ namespace ConsoleApp1
             return true;
         }
 
-        private static bool IsVertialWin(bool?[,] board,bool player)
+        private static bool IsLineWin(bool player)
         {
+            bool isHorizontalWin;
+            bool isVerticalWin;
             for (int line = 0; line < board.GetLength(0); line++)
             {
-                bool isWin = true;
+                 isHorizontalWin = true;
+                 isVerticalWin = true;
 
                 for (int column = 0; column < board.GetLength(1); column++)
                 {
                     if (board[line, column] != player)
                     {
-                        isWin = false;
-                        break;
+                        isHorizontalWin = false;
                     }
-                }
-                if (isWin)
-                    return true;
-                
-            }
-            
-            return false;
-        }
-
-        private static bool IsHorizontalWin(bool?[,] board,bool player)
-        {
-            for (int column = 0; column < board.GetLength(0); column++)
-            {
-                bool isWin = true;
-
-                for (int line = 0; line < board.GetLength(1); line++)
-                {
                     if (board[column, line] != player)
                     {
-                        isWin = false;
-                        break;
+                        isVerticalWin = false;
                     }
                 }
-                if (isWin)
-                    return true;
-
+                if (isHorizontalWin || isVerticalWin)
+                    return true;   
             }
-
             return false;
         }
 
-        private static void ShowBoard(bool?[,] board)
+        private static void ShowBoard()
         {
             ShowIntermediateLine(board.GetLength(0));
             for (int line = 0; line < board.GetLength(0); line++)
@@ -198,7 +184,7 @@ namespace ConsoleApp1
             }
             Console.WriteLine();
         }
-        private static (int column, int line) AskPosition(bool?[,] board)
+        private static (int column, int line) AskPosition()
         {
             while (true)
             {
@@ -206,14 +192,14 @@ namespace ConsoleApp1
                 int column = GetInt();
                 Console.WriteLine("Insert line value");
                 int line = GetInt();
-                if (IsInsideBoard(board, column, line) && board[line,column]==null)
+                if (IsInsideBoard(column, line) && board[line,column]==null)
                     return (column, line);
 
                 Console.WriteLine("Invalid position");
             }
         }
 
-        private static bool IsInsideBoard(bool?[,] board,int column,int line)
+        private static bool IsInsideBoard(int column,int line)
         {
             if ((board.GetLength(0) > line && line >= 0) && (board.GetLength(1) > column && column >= 0))
                 return true;
