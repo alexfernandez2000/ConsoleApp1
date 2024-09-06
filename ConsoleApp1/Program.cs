@@ -26,7 +26,8 @@ namespace ConsoleApp1
 8: Tic Tac Toe
 9: Number Inversor
 10: Find the number
-11: Even numbers");
+11: Even numbers
+12: Tic Tac Toe TriDimensional");
                 switch (option)
                 {
                     case "1":
@@ -62,6 +63,9 @@ namespace ConsoleApp1
                     case "11":
                         EvenNumbers();
                         break;
+                    case "12":
+                        TridimensionalTikTakToe();
+                        break;
                     default:
                         option = "end";
                         break;
@@ -71,6 +75,13 @@ namespace ConsoleApp1
 
             }
         }
+
+        #region Tridimensional tik tak toe
+        private static void TridimensionalTikTakToe()
+        {
+
+        }
+        #endregion
         #region EvenNumbers
         private static void EvenNumbers()
         {
@@ -117,7 +128,6 @@ namespace ConsoleApp1
             return numbers;
         }
         #endregion
-        #region FindTheNumber
         private static void FindTheNumber()
         {
             Random random = new Random();
@@ -139,7 +149,6 @@ namespace ConsoleApp1
                     Console.WriteLine("Your number is lower than winner number");
             }
         }
-            #endregion
         #region Number Inversor
         private static void NumberInversor()
         {
@@ -174,7 +183,7 @@ namespace ConsoleApp1
         {
             bool player = true;
 
-            board = new bool?[3, 3];
+            board = new bool?[4, 4];
             ShowBoard();
             while (true)
             {
@@ -227,12 +236,12 @@ namespace ConsoleApp1
             bool firstDiagonal = true; 
             bool secondDiagonal = true;
             int tableLenght = board.GetLength(0)-1;
-            int result;
+
             for (int line = 0; line < tableLenght+1; line++)
             {
                 if (board[line, line] != player)
                     firstDiagonal = false;
-                result = tableLenght - line;
+
                 if (board[tableLenght - line,line]!=player)
                     secondDiagonal=false;
             }
@@ -246,6 +255,7 @@ namespace ConsoleApp1
         {
             bool isHorizontalWin;
             bool isVerticalWin;
+
             for (int line = 0; line < board.GetLength(0); line++)
             {
                  isHorizontalWin = true;
@@ -297,6 +307,7 @@ namespace ConsoleApp1
         {
             int column;
             int line;
+
             while (true)
             {
                 Console.WriteLine("Insert column value");
@@ -557,11 +568,7 @@ Inverted Word : {InverseText(word)}");
                 {
                     if (index == 0)
                     {
-                        if (isCamel)
-                            isUppercase = true;
-                        else
-                            isUppercase = false;
-
+                        isUppercase = isCamel;
                     }
                     if (isUppercase)
                     {
