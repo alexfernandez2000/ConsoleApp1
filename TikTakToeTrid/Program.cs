@@ -72,13 +72,9 @@ namespace TikTakToeTrid
 
         private static bool PlayerWin(bool player)
         {
-            //if (!IsLineWin(player) && !IsDiagonalWin(player))
-            //    return false;
-            //return true;
-            if (!IsLineWin(player))
+            if (!IsLineWin(player) && !IsDiagonalWin(player))
                 return false;
             return true;
-
         }
 
         private static bool IsDiagonalWin(bool player)
@@ -94,21 +90,18 @@ namespace TikTakToeTrid
                 {
                     if (board[layer,line, line] != player)
                         firstDiagonal = false;
-
                     if (board[layer,tableLenght - line, line] != player)
                         secondDiagonal = false;
-
-                    if (board[line, line, layer] != player)
-                        terceraDiagona = false;
-
                     if (board[line, tableLenght - line, layer] != player)
+                        terceraDiagona = false;
+                    if (board[line, line, layer] != player)
                         cuartaDiagonal = false;
                 }
 
                 if (firstDiagonal || secondDiagonal || terceraDiagona || cuartaDiagonal)
                     return true;
             }
-            return true;
+            return false;
         }
 
         private static bool IsLineWin(bool player)
