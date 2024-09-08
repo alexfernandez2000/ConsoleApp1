@@ -40,11 +40,11 @@ namespace TikTakToeTrid
                     ShowResult(player);
                     break;
                 }
-                //if (isDraw())
-                //{
-                //    ShowResult(null);
-                //    break;
-                //}
+                if (isDraw())
+                {
+                    ShowResult(null);
+                    break;
+                }
                 player = !player;
             }
             ShowTridimentionalBoard();
@@ -60,14 +60,15 @@ namespace TikTakToeTrid
                 Console.WriteLine($"Player 2 win");
         }
 
-        //private static bool isDraw()
-        //{
-        //    for (int line = 0; line < board.GetLength(0); line++)
-        //        for (int column = 0; column < board.GetLength(1); column++)
-        //            if (board[line, column] == null)
-        //                return false;
-        //    return true;
-        //}
+        private static bool isDraw()
+        {
+            for (int layer = 0; layer < board.GetLength(0); layer++)
+                for (int line = 0; line < board.GetLength(0); line++)
+                    for (int column = 0; column < board.GetLength(1); column++)
+                        if (board[layer,line, column] == null)
+                            return false;
+            return true;
+        }
 
 
         private static bool PlayerWin(bool player)
@@ -79,10 +80,8 @@ namespace TikTakToeTrid
 
         private static bool IsDiagonalWin(bool player)
         {
-            bool firstDiagonal = true;
-            bool secondDiagonal = true;
-            bool terceraDiagona = true;
-            bool cuartaDiagonal = true;
+            bool firstDiagonal, secondDiagonal, terceraDiagona , cuartaDiagonal, quintaDiagonal, sextaDiagonal, septimaDiagonal, octavaDiagonal;
+            firstDiagonal = secondDiagonal = terceraDiagona = cuartaDiagonal = quintaDiagonal = sextaDiagonal = septimaDiagonal = octavaDiagonal = true;
             int tableLenght = board.GetLength(0) - 1;
             for (int layer = 0; layer < tableLenght+1; layer++)
             {
@@ -97,10 +96,20 @@ namespace TikTakToeTrid
                     if (board[line, line, layer] != player)
                         cuartaDiagonal = false;
                 }
-
+                if (board[layer, layer, layer] != player)
+                    quintaDiagonal = false;
+                if (board[layer, tableLenght - layer, layer] != player)
+                    sextaDiagonal = false;
+                if (board[layer, layer, tableLenght - layer] != player)
+                    septimaDiagonal = false;
+                if (board[layer, tableLenght - layer, tableLenght - layer] != player)
+                    octavaDiagonal = false;
                 if (firstDiagonal || secondDiagonal || terceraDiagona || cuartaDiagonal)
                     return true;
             }
+            if (quintaDiagonal || sextaDiagonal || septimaDiagonal || octavaDiagonal)
+                return true;
+
             return false;
         }
 
