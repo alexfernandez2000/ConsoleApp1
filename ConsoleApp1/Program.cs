@@ -9,6 +9,22 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        public enum eExercices
+        {
+            LowerCamelCase,
+            DateComparation,
+            Palindrome,
+            Pow,
+            EnterNumberDivision,
+            WordComparer,
+            TextInversor,
+            TicTacToe,
+            NumberInversor,
+            FindTheNumber,
+            EvenNumbers,
+            DayOfWeek
+        }
+
         static void Main(string[] args)
         {
             string option;
@@ -16,55 +32,55 @@ namespace ConsoleApp1
             while (true)
             {
                 option = ReadConsoleWord(@"Write the number of the exercice you want to execute:
-1: Lower/camel case
-2: Date comparation
-3: Palindrome
-4: Pow
-5: Enter number division
-6: Word comparer
-7: Text Inversor
-8: Tic Tac Toe
-9: Number Inversor
-10: Find the number
-11: Even numbers
-12: Tic Tac Toe TriDimensional");
-                switch (option)
+0: Lower/camel case
+1: Date comparation
+2: Palindrome
+3: Pow
+4: Enter number division
+5: Word comparer
+6: Text Inversor
+7: Tic Tac Toe
+8: Number Inversor
+9: Find the number
+10: Even numbers
+11: Day of week");
+                switch ((eExercices)int.Parse(option))
                 {
-                    case "1":
+                    case eExercices.LowerCamelCase:
                         StartExerciceLowerCamelCase();
                         break;
-                    case "2":
+                    case eExercices.DateComparation:
                         StartingCompareDataExercice();
                         break;
-                    case "3":
+                    case eExercices.Palindrome:
                         StartingPalindromeExcercice();
                         break;
-                    case "4":
+                    case eExercices.Pow:
                         CalculatePowExercice();
                         break;
-                    case "5":
+                    case eExercices.EnterNumberDivision:
                         EnterNumberDivision();
                         break;
-                    case "6":
+                    case eExercices.WordComparer:
                         WordComparer();
                         break;
-                    case "7":
+                    case eExercices.TextInversor:
                         TextInversor();
                         break;
-                    case "8":
+                    case eExercices.TicTacToe:
                         TikTakToe();
                         break;
-                    case "9":
+                    case eExercices.NumberInversor:
                         NumberInversor();
                         break;
-                    case "10":
+                    case eExercices.FindTheNumber:
                         FindTheNumber();
                         break;
-                    case "11":
+                    case eExercices.EvenNumbers:
                         EvenNumbers();
                         break;
-                    case "12":
-                        TridimensionalTikTakToe();
+                    case eExercices.DayOfWeek:
+                        DayOfWeek();
                         break;
                     default:
                         option = "end";
@@ -75,13 +91,19 @@ namespace ConsoleApp1
 
             }
         }
-
-        #region Tridimensional tik tak toe
-        private static void TridimensionalTikTakToe()
+        private static void DayOfWeek()
         {
-
+            while (true)
+            {
+                string option = ReadConsoleWord("Write the day of week or n to leave");
+                if (option == "n") 
+                    break;
+                if (!Enum.TryParse(option, out eWeek day))
+                    Console.WriteLine("Invalid option");
+                else
+                    Console.WriteLine($"Day: {day.ToString()} int result : {(int)day}");
+            }
         }
-        #endregion
         #region EvenNumbers
         private static void EvenNumbers()
         {
@@ -195,7 +217,7 @@ namespace ConsoleApp1
                     ShowResult(player);
                     break;
                 }
-                if (isDraw())
+                if (IsDraw())
                 {
                     ShowResult(null);
                     break;
@@ -214,7 +236,7 @@ namespace ConsoleApp1
                 Console.WriteLine($"Player 2 win");
         }
 
-        private static bool isDraw()
+        private static bool IsDraw()
         {
             for (int line = 0; line < board.GetLength(0); line++)
                 for (int column = 0; column < board.GetLength(1); column++)
@@ -584,6 +606,16 @@ Inverted Word : {InverseText(word)}");
         }
         #endregion
         #region Tools
+        enum eWeek
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
         public enum ECompare
         {
             IsLower=1,
