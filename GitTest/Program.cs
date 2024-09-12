@@ -10,7 +10,8 @@ namespace GitTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Primera version");
+            //Primera version
+            Console.WriteLine("Segunda version");
         }
     }
 }
