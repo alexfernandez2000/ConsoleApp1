@@ -8,7 +8,9 @@ namespace Snake
 {
     internal class Program
     {
-       private enum eCellStatus
+        private const int _starterBodySize = 1;
+
+        private enum eCellStatus
         {
             Empty,
             Head,
@@ -26,20 +28,24 @@ namespace Snake
         }
 
         private static List<Cell> _snake = new List<Cell>();
-        private static eCellStatus[,] _board = new eCellStatus[10,10];
+        private static eCellStatus[,] _board = new eCellStatus[4,4];
         static void Main(string[] args)
         {
             Stopwatch stopwatch = new Stopwatch();
 
             InsertSnake();
             GenerateFruit();
-            while (true)
+            bool? status = null;
+            while (status==null)
             {
                 ShowBoard();
                 Movement();
+                status = ProcessNewPosition();
+                Console.Clear();
             }
-
-            Console.ReadLine();
+            Console.WriteLine((bool)status ? "Congratulations you win" : "!!Congratulations you lose NOOOOOB!!");
+            ShowBoard();
+            Console.ReadKey();
         }
 
         private static void Movement()
@@ -72,23 +78,23 @@ namespace Snake
 
                 Console.WriteLine("Invalid key, use wasd");
             }
-
-            ProcessNewPosition();
         }
 
-        private static void ProcessNewPosition()
+        private static bool? ProcessNewPosition()
         {
             try
             {
                 switch (_board[_currentHeadPosition.Line, _currentHeadPosition.Column])
                 {
                     case eCellStatus.Body:
-                        End();
-                        break;
+                        return false;
                     case eCellStatus.Fruit:
                         AddBody();
                         MoveSnake();
-                        GenerateFruit();
+                        if (Array.Exists(_board.Cast<eCellStatus>().ToArray(), x => x == eCellStatus.Empty))
+                            GenerateFruit();
+                        else
+                            return true;
                         break;
                     default:
                         MoveSnake();
@@ -97,8 +103,9 @@ namespace Snake
             }
             catch (IndexOutOfRangeException e)
             {
-                End();
+                return false;
             }
+            return null;
         }
 
         private static void GenerateFruit()
@@ -135,19 +142,20 @@ namespace Snake
                 _board[cell.Line, cell.Column] = cell.CellStatus;
                 if (i == _snake.Count - 1 && (cell.Column != oldPosition.Column || cell.Line != oldPosition.Line))
                     _board[oldPosition.Line, oldPosition.Column] = eCellStatus.Empty;
-
             }
         }
         private static void AddBody()
         {
             Cell cell = new Cell();
             Cell tail = _snake.Last();
-            cell.Column= tail.Column;
-            cell.Line= tail.Line;
+
+            cell.Column = tail.Column;
+            cell.Line = tail.Line;
+            cell.CellStatus = eCellStatus.Body;
             _snake.Add(cell);
         }
 
-        private static void End()
+        private static void End(bool win)
         {
             Console.WriteLine(win?"Congratulations you win" : "!!Congratulations you lose NOOOOOB!!");
         }
@@ -162,12 +170,12 @@ namespace Snake
             cell.Column = _currentHeadPosition.Column;
             _snake.Add(cell);
             _board[cell.Line, cell.Column] = cell.CellStatus;
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < _starterBodySize; i++)
             {
                 cell = new Cell();
 
                 cell.CellStatus = eCellStatus.Body;
-                cell.Line = _currentHeadPosition.Line + i;
+                cell.Line = _currentHeadPosition.Line+1 + i;
                 cell.Column = _currentHeadPosition.Column;
                 _snake.Add(cell);
                 _board[cell.Line, cell.Column] = cell.CellStatus;
@@ -209,10 +217,7 @@ namespace Snake
         private static void ShowBoardLines()
         {
             for (int i = 0; i < _board.GetLength(0); i++)
-            {
                 Console.Write("_");
-            }
-
             Console.WriteLine("__");
         }
     }
