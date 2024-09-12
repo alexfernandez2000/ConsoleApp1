@@ -11,7 +11,7 @@ namespace GitTest
         static void Main(string[] args)
         {
             //Primera version
-            Console.WriteLine("Segunda version");
+            Console.WriteLine("Tercera version");
         }
     }
 }
