@@ -149,7 +149,7 @@ namespace Snake
 
         private static void End()
         {
-            Console.WriteLine("Colision");
+            Console.WriteLine(win?"Congratulations you win" : "!!Congratulations you lose NOOOOOB!!");
         }
         private static void InsertSnake()
         {
