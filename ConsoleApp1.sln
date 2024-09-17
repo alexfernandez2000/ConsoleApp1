@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ficheros", "Ficheros\Ficher
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitTest", "GitTest\GitTest.csproj", "{9827C636-AD9E-4E39-94AC-F36595B8BFC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baraja", "Baraja\Baraja.csproj", "{DD1D2174-1A7B-42DD-944A-DADEC30DA722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{9827C636-AD9E-4E39-94AC-F36595B8BFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9827C636-AD9E-4E39-94AC-F36595B8BFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9827C636-AD9E-4E39-94AC-F36595B8BFC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1D2174-1A7B-42DD-944A-DADEC30DA722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1D2174-1A7B-42DD-944A-DADEC30DA722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1D2174-1A7B-42DD-944A-DADEC30DA722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1D2174-1A7B-42DD-944A-DADEC30DA722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
