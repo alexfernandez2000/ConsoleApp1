@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 
 namespace Snake
 {
@@ -28,7 +27,7 @@ namespace Snake
         }
 
         private static List<Cell> _snake = new List<Cell>();
-        private static eCellStatus[,] _board = new eCellStatus[4,4];
+        private static eCellStatus[,] _board = new eCellStatus[4, 4];
         static void Main(string[] args)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -36,7 +35,7 @@ namespace Snake
             InsertSnake();
             GenerateFruit();
             bool? status = null;
-            while (status==null)
+            while (status == null)
             {
                 ShowBoard();
                 Movement();
@@ -73,7 +72,7 @@ namespace Snake
                         break;
                 }
 
-                if (_currentHeadPosition!=oldHeadPosition)
+                if (_currentHeadPosition != oldHeadPosition)
                     break;
 
                 Console.WriteLine("Invalid key, use wasd");
@@ -113,31 +112,31 @@ namespace Snake
             Random random = new Random();
             while (true)
             {
-               int randomLine = random.Next(_board.GetLength(0));
-               int randomColumn = random.Next(_board.GetLength(1));
-               if (_board[randomLine,randomColumn]==eCellStatus.Empty)
-               {
-                    _board[randomLine,randomColumn] = eCellStatus.Fruit;
+                int randomLine = random.Next(_board.GetLength(0));
+                int randomColumn = random.Next(_board.GetLength(1));
+                if (_board[randomLine, randomColumn] == eCellStatus.Empty)
+                {
+                    _board[randomLine, randomColumn] = eCellStatus.Fruit;
                     break;
-               }
+                }
             }
         }
 
         private static void MoveSnake()
         {
-            for (int i = _snake.Count-1; i >= 0 ; i--)
+            for (int i = _snake.Count - 1; i >= 0; i--)
             {
                 Cell cell = _snake[i];
                 (int Line, int Column) oldPosition = (cell.Line, cell.Column);
-                if (cell.CellStatus==eCellStatus.Head)
+                if (cell.CellStatus == eCellStatus.Head)
                 {
                     cell.Column = _currentHeadPosition.Column;
-                    cell.Line= _currentHeadPosition.Line;
+                    cell.Line = _currentHeadPosition.Line;
                 }
                 else
                 {
-                    cell.Column = _snake[i -1].Column;
-                    cell.Line = _snake[i -1].Line;
+                    cell.Column = _snake[i - 1].Column;
+                    cell.Line = _snake[i - 1].Line;
                 }
                 _board[cell.Line, cell.Column] = cell.CellStatus;
                 if (i == _snake.Count - 1 && (cell.Column != oldPosition.Column || cell.Line != oldPosition.Line))
@@ -157,7 +156,7 @@ namespace Snake
 
         private static void End(bool win)
         {
-            Console.WriteLine(win?"Congratulations you win" : "!!Congratulations you lose NOOOOOB!!");
+            Console.WriteLine(win ? "Congratulations you win" : "!!Congratulations you lose NOOOOOB!!");
         }
         private static void InsertSnake()
         {
@@ -175,7 +174,7 @@ namespace Snake
                 cell = new Cell();
 
                 cell.CellStatus = eCellStatus.Body;
-                cell.Line = _currentHeadPosition.Line+1 + i;
+                cell.Line = _currentHeadPosition.Line + 1 + i;
                 cell.Column = _currentHeadPosition.Column;
                 _snake.Add(cell);
                 _board[cell.Line, cell.Column] = cell.CellStatus;
@@ -190,7 +189,7 @@ namespace Snake
 
                 for (int column = 0; column < _board.GetLength(1); column++)
                 {
-                    switch (_board[line,column])
+                    switch (_board[line, column])
                     {
                         case eCellStatus.Empty:
                             stringLine += " ";
