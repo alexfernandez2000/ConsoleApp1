@@ -44,7 +44,7 @@ namespace Baraja
 
         public Card StoleAtPosition(int position)
         {
-            if (cards.Count == 0)
+            if (cards.Count == 0 || cards.Count<position)
                 return null;
 
             Card card = Cards[position];

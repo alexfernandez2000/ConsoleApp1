@@ -8,19 +8,13 @@ namespace Baraja
 {
     internal class Program
     {
-        /// <summary>
-        /// Robar carta
-        /// Barajar
-        /// Robar al azar
-        /// Robar en posicion N
-        /// </summary>
-        /// <param name="args"></param>
+        private Dictionary<string, Deck> Players = new Dictionary<string, Deck>();
         static void Main(string[] args)
         {
             Deck deck = new Deck();
             Card card = deck.StoleCard();
             card = deck.RandomStoleCard();
-            card = deck.StoleAtPosition(0);
+            card = deck.StoleAtPosition(60);
             deck.MixDeck();
             card = deck.StoleCard();
         }
