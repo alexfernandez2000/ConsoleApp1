@@ -15,7 +15,7 @@ namespace Ficheros
             LoadTeams();
             while (option!=0)
             {
-                Console.WriteLine(@"Opciones:
+                Console.WriteLine(@"Opciones: 
 1:Añadir equipo
 2: Modificar puntuación
 3: Eliminar equipo
