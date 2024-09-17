@@ -17,6 +17,13 @@ namespace Baraja
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            Deck deck = new Deck();
+            Card card = deck.StoleCard();
+            card = deck.RandomStoleCard();
+            card = deck.StoleAtPosition(0);
+            deck.MixDeck();
+            card = deck.StoleCard();
         }
+        
     }
 }

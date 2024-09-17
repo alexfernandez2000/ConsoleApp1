@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace Baraja
 {
     public class Deck
@@ -12,14 +11,19 @@ namespace Baraja
 
         public Deck()
         {
-                
+            Cards=new List<Card>();
+            foreach (Card.eSuit suit in Enum.GetValues(typeof(Card.eSuit)))
+                if (suit != Card.eSuit.Jocker)
+                    for (int i = 1; i < 13; i++)
+                        Cards.Add(new Card(i, suit));
+            Cards.Add(new Card(13,Card.eSuit.Jocker));
+            Cards.Add(new Card(13, Card.eSuit.Jocker));
         }
 
         public Deck(List<Card>cards)
         {
             Cards=cards;
         }
-
         public Card StoleCard()
         {
             return StoleAtPosition(0);
@@ -29,6 +33,7 @@ namespace Baraja
             Random random = new Random();
 
             List<Card> shuffledList = cards.OrderBy(x => random.Next()).ToList();
+            Cards=shuffledList;
         }
 
         public Card RandomStoleCard()

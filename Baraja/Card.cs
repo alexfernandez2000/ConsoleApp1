@@ -17,14 +17,15 @@
             Number=number;
             Suit=suit;
         }
+        public enum eSuit
+        {
+            Clubs,//Bastos
+            Gold,//Oro
+            Swords,//Espadas
+            Cups,//Copas
+            Jocker
+        }
+
     }
 
-    public enum eSuit
-    {
-        Clubs,//Bastos
-        Gold,//Oro
-        Swords,//Espadas
-        Cups,//Copas
-        Jocker
-    }
 }
