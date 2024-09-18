@@ -45,6 +45,7 @@ namespace Baraja
         private static string PlayRound(List<string>players)
         {
             Dictionary<string, Card> playedCards=new Dictionary<string, Card>();
+
             foreach (var player in players)
                 playedCards.Add(player,_players[player].StoleCard());
             int maxCardValue = playedCards.Max(x => x.Value== null? -1 : x.Value.Number);
