@@ -9,7 +9,7 @@ namespace Baraja
 
         public Deck()
         {
-            
+            Cards=new List<Card>();
         }
         public Deck SpanishDeck()
         {
