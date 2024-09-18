@@ -16,6 +16,7 @@ namespace Baraja
 
         static void Main(string[] args)
         {
+
             _mainDeck = new Deck().SpanishDeck();
             _mainDeck.MixDeck();
             AskPlayers();
