@@ -9,10 +9,6 @@ using System.Threading.Tasks;
 
 namespace Baraja
 {
-    /// <summary>
-    /// TODO
-    /// Hacer un override ToString de las clases.
-    /// </summary>
     internal class Program
     {
         private static Dictionary<string, Deck> _players = new Dictionary<string, Deck>();
