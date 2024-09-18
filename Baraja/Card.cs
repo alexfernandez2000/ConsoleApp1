@@ -2,10 +2,8 @@
 {
     public class Card
     {
-        private int number;
-        private eSuit suit;
-        public int Number { get { return number;} set { number = value; } }
-        public eSuit Suit { get { return suit; } set { suit = value; } }
+        public int Number { get; set; }
+        public eSuit Suit { get; set; }
 
         public Card()
         {

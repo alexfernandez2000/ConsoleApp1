@@ -5,11 +5,13 @@ namespace Baraja
 {
     public class Deck
     {
-        private List<Card> cards;
-
-        public List<Card> Cards {get { return cards; }set { cards= value; } }
+        public List<Card> Cards {get; set; }
 
         public Deck()
+        {
+            
+        }
+        public Deck SpanishDeck()
         {
             Cards=new List<Card>();
             foreach (Card.eSuit suit in Enum.GetValues(typeof(Card.eSuit)))
@@ -18,6 +20,7 @@ namespace Baraja
                         Cards.Add(new Card(i, suit));
             Cards.Add(new Card(13,Card.eSuit.Jocker));
             Cards.Add(new Card(13, Card.eSuit.Jocker));
+            return this;
         }
 
         public Deck(List<Card>cards)
@@ -32,23 +35,23 @@ namespace Baraja
         {
             Random random = new Random();
 
-            List<Card> shuffledList = cards.OrderBy(x => random.Next()).ToList();
+            List<Card> shuffledList = Cards.OrderBy(x => random.Next()).ToList();
             Cards=shuffledList;
         }
 
         public Card RandomStoleCard()
         {
             Random random = new Random();
-            return StoleAtPosition(random.Next(0, cards.Count - 1));
+            return StoleAtPosition(random.Next(0, Cards.Count - 1));
         }
 
         public Card StoleAtPosition(int position)
         {
-            if (cards.Count == 0 || cards.Count<position)
+            if (Cards.Count == 0 || Cards.Count<position)
                 return null;
 
             Card card = Cards[position];
-            cards.Remove(card);
+            Cards.Remove(card);
             return card;
         }
 
