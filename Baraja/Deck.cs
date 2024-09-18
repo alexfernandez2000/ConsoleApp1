@@ -55,5 +55,14 @@ namespace Baraja
             return card;
         }
 
+        public override string ToString()
+        {
+            string result="Cards:";
+
+            foreach (Card card in Cards)
+                result += $"\n {card.ToString()}";
+
+            return result;
+        }
     }
 }

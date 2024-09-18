@@ -15,6 +15,12 @@
             Number=number;
             Suit=suit;
         }
+
+        public override string ToString()
+        {
+            return $"Card suit: {Suit.ToString()} number: {Number}";
+        }
+
         public enum eSuit
         {
             Clubs,//Bastos
