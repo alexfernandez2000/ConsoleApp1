@@ -6,7 +6,7 @@ namespace Baraja
     public class Deck
     {
         public List<Card> Cards {get; set; }
-
+        private List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups};
         public Deck()
         {
             Cards=new List<Card>();
