@@ -6,7 +6,8 @@ namespace Baraja
     public class Deck
     {
         public List<Card> Cards {get; set; }
-        private List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups};
+        private readonly List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups};
+        private readonly List<Card.eSuit> _pokerDeck = new List<Card.eSuit>() { Card.eSuit.Gold };
         public Deck()
         {
             Cards=new List<Card>();
@@ -14,8 +15,7 @@ namespace Baraja
         public Deck SpanishDeck()
         {
             Cards=new List<Card>();
-            foreach (Card.eSuit suit in Enum.GetValues(typeof(Card.eSuit)))
-                if (suit != Card.eSuit.Jocker)
+            foreach (Card.eSuit suit in _spanishDeck)
                     for (int i = 1; i < 13; i++)
                         Cards.Add(new Card(i, suit));
             Cards.Add(new Card(13,Card.eSuit.Jocker));

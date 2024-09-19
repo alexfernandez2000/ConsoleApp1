@@ -27,7 +27,11 @@
             Gold,//Oro
             Swords,//Espadas
             Cups,//Copas
-            Jocker
+            Jocker,
+            Corazones,
+            Diamantes,
+            Treboles,
+            Picas
         }
 
     }

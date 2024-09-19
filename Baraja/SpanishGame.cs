@@ -18,11 +18,7 @@ namespace Baraja
             while (true)
             {
                 PlayRound(_players.Select(x => x.Key).ToList());
-                List<string> playersToDelete = _players.Where(x => x.Value.Cards.Count == 0).Select(kvp => kvp.Key).ToList();
-
-                foreach (string player in playersToDelete)
-                    _players.Remove(player);
-
+                RemoveLosers();
                 if (_players.Count == 1)
                 {
                     Console.WriteLine($"Winner: {_players.FirstOrDefault().Key}");
@@ -31,6 +27,14 @@ namespace Baraja
             }
 
             Console.ReadKey();
+        }
+
+        private static void RemoveLosers()
+        {
+            List<string> playersToDelete = _players.Where(x => x.Value.Cards.Count == 0).Select(kvp => kvp.Key).ToList();
+
+            foreach (string player in playersToDelete)
+                _players.Remove(player);
         }
         private static string PlayRound(List<string> players)
         {
