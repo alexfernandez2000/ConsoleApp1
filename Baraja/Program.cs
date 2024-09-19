@@ -16,7 +16,8 @@ namespace Baraja
 
         static void Main(string[] args)
         {
-            new SpanishGame().StartPlay();
+            //new SpanishGame().StartPlay();
+
         }
 
     }

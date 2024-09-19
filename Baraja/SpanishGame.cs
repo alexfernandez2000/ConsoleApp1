@@ -6,8 +6,8 @@ namespace Baraja
 {
     internal class SpanishGame
     {
-        private static Dictionary<string, Deck> _players = new Dictionary<string, Deck>();
-        private static Deck _mainDeck = new Deck();
+        private Dictionary<string, Deck> _players = new Dictionary<string, Deck>();
+        private Deck _mainDeck = new Deck();
 
         public void StartPlay()
         {
@@ -29,19 +29,20 @@ namespace Baraja
             Console.ReadKey();
         }
 
-        private static void RemoveLosers()
+        private void RemoveLosers()
         {
             List<string> playersToDelete = _players.Where(x => x.Value.Cards.Count == 0).Select(kvp => kvp.Key).ToList();
 
             foreach (string player in playersToDelete)
                 _players.Remove(player);
         }
-        private static string PlayRound(List<string> players)
+        private string PlayRound(List<string> players)
         {
             Dictionary<string, Card> playedCards = new Dictionary<string, Card>();
 
             foreach (var player in players)
                 playedCards.Add(player, _players[player].StoleCard());
+
             int maxCardValue = playedCards.Max(x => x.Value == null ? -1 : x.Value.Number);
 
             List<string> winners = playedCards.Where(x => (x.Value == null ? -1 : x.Value.Number) == maxCardValue).Select(x => x.Key).ToList();
@@ -61,7 +62,7 @@ namespace Baraja
             return winner;
         }
 
-        private static void DealingCards()
+        private void DealingCards()
         {
             int cardsToDeal = _mainDeck.Cards.Count / _players.Count;
             foreach (var player in _players)
@@ -69,32 +70,18 @@ namespace Baraja
                     player.Value.Cards.Add(_mainDeck.StoleCard());
         }
 
-        private static void AskPlayers()
+        private void AskPlayers()
         {
             Console.WriteLine("How many players want to play?");
-            int playerNumber = GetInt();
+            int playerNumber = Tools.GetInt();
 
             while (playerNumber > 0)
             {
-                string playerName = ReadConsoleWord("Player name:");
+                string playerName = Tools.ReadConsoleWord("Player name:");
 
                 _players.Add(playerName, new Deck());
                 playerNumber--;
             }
-        }
-        private static int GetInt()
-        {
-            while (true)
-            {
-                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
-                    return number;
-                Console.WriteLine("Invalid number");
-            }
-        }
-        private static string ReadConsoleWord(string text)
-        {
-            Console.WriteLine(text);
-            return Console.ReadLine();
         }
     }
 }

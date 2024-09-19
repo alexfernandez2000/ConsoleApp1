@@ -6,11 +6,21 @@ namespace Baraja
     public class Deck
     {
         public List<Card> Cards {get; set; }
-        private readonly List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups};
-        private readonly List<Card.eSuit> _pokerDeck = new List<Card.eSuit>() { Card.eSuit.Gold };
+        private readonly List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups, Card.eSuit.Gold };
+        private readonly List<Card.eSuit> _pokerDeck = new List<Card.eSuit>() { Card.eSuit.Corazones,Card.eSuit.Diamantes,Card.eSuit.Picas,Card.eSuit.Treboles };
         public Deck()
         {
             Cards=new List<Card>();
+        }
+
+        public Deck PokerDeck()
+        {
+            Cards = new List<Card>();
+            foreach (Card.eSuit suit in _pokerDeck)
+                for (int i = 1; i < 14; i++)
+                    Cards.Add(new Card(i, suit));
+            return this;
+
         }
         public Deck SpanishDeck()
         {
