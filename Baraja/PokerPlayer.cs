@@ -32,7 +32,7 @@ namespace Baraja
         {
             while (true)
             {
-                Tools.ReadConsoleWord("How much you want to start the small blind?");
+                Console.WriteLine("How much you want to start the small blind?");
                 int ammount = Tools.GetInt();
 
                 if (ammount <= CurrentMoney)

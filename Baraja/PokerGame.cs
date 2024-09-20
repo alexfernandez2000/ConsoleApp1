@@ -15,16 +15,16 @@ namespace Baraja
         private readonly int _rounds = 4;
         private string _nameRaisedPlayer = "";
         private int _currentBet = 0;
-        private void StartGame()
+        public void StartGame()
         {
             _mainDeck.MixDeck();
             CreatePlayers();
             StartHand();
+            Console.ReadLine();
         }
 
         private void StartHand()
         {
-            _currentBet = 0;
             for (int round = 0; round < _rounds; round++)
             {
                 switch (round)
@@ -44,12 +44,33 @@ namespace Baraja
                 }
                 StartRound();
                 ResetRound();
+                if (IsWinByFold())
+                    break;
                 if (round==0)
                     DealCards();
             }
             
         }
 
+        private bool IsWinByFold()
+        {
+            IEnumerable<PokerPlayer> inGamePlayers = _players.Where(x => !x.IsFold);
+            if (inGamePlayers.Count()>1)
+                return false;
+            PokerPlayer winner = inGamePlayers.FirstOrDefault();
+            winner.CurrentMoney += GetTotalBet();
+            Console.WriteLine($"Winner {winner.Name}");
+
+            return true;
+        }
+
+        private int GetTotalBet()
+        {
+            int total = 0;
+            foreach (PokerPlayer pokerPlayer in _players)
+                total += pokerPlayer.Bet;
+            return total;
+        }
         private void DealCards()
         {
             foreach (PokerPlayer pokerPlayer in _players)
@@ -60,7 +81,7 @@ namespace Baraja
         {
             int player=0;
             _nameRaisedPlayer = _players[player].Name;
-            while (!_players[player].PlayedRound && _nameRaisedPlayer != _players[player].Name)
+            while (!_players[player].PlayedRound && _nameRaisedPlayer == _players[player].Name)
             {
                 if (_players[player].IsFold || _players[player].CurrentMoney == 0)
                 {
@@ -76,7 +97,7 @@ Current Bet: {_currentBet}");
             }
         }
 
-        public void PlayerAction(PokerPlayer player)
+        private void PlayerAction(PokerPlayer player)
         {
             while (true)
             {
