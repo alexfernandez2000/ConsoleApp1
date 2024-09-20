@@ -51,23 +51,25 @@ Tried Bet: {ammount}");
 
         public int BigBlind(int smallBlind)
         {
-            Bet = smallBlind >= CurrentMoney ? CurrentMoney : smallBlind;
-            CurrentMoney = smallBlind >= CurrentMoney ? 0 : CurrentMoney - (smallBlind - Bet);
+            Bet = smallBlind*2 >= CurrentMoney ? CurrentMoney : smallBlind*2;
+            CurrentMoney = smallBlind*2 >= CurrentMoney ? 0 : CurrentMoney - Bet;
 
-            return smallBlind * 2;
+            return Bet;
         }
         public bool Call(int ammount)
         {
+            int augment = ammount - Bet;
             if (IsFold)
                 return false;
             Bet = ammount >= CurrentMoney ? CurrentMoney : ammount;
-            CurrentMoney= ammount >= CurrentMoney ? 0 : CurrentMoney-(ammount-Bet);
+            CurrentMoney= ammount >= CurrentMoney ? 0 : CurrentMoney-augment;
             return true;
         }
 
         public int Raise(int ammount)
         {
             int ammountToRise=-1;
+            int augment = ammount - Bet;
 
             if (IsFold || CurrentMoney <= ammount - Bet)
             {
@@ -85,7 +87,7 @@ Tried Bet: {ammount}");
             }
 
             Bet = ammountToRise + ammount;
-            CurrentMoney -= ((ammount+ammountToRise)-Bet);
+            CurrentMoney -= ammount+ammountToRise;
             return ammountToRise;
                 
         }

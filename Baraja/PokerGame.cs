@@ -27,11 +27,14 @@ namespace Baraja
         {
             for (int round = 0; round < _rounds; round++)
             {
+                Console.WriteLine($"Starting round{round}");
                 switch (round)
                 {
                     case 0:
                         _currentBet = _players[round].SmallBlind();
                         _currentBet = _players[round + 1].BigBlind(_currentBet);
+                        _nameRaisedPlayer = _players[round + 1].Name;
+                        _players[round + 1].PlayedRound = true;
                         break;
                     case 1:
                         for (int cardsToDraw = 0; cardsToDraw < 3; cardsToDraw++)
@@ -43,9 +46,9 @@ namespace Baraja
                         break;
                 }
                 StartRound();
-                ResetRound();
                 if (IsWinByFold())
                     break;
+                ResetRound(false);
                 if (round==0)
                     DealCards();
             }
@@ -60,7 +63,7 @@ namespace Baraja
             PokerPlayer winner = inGamePlayers.FirstOrDefault();
             winner.CurrentMoney += GetTotalBet();
             Console.WriteLine($"Winner {winner.Name}");
-
+            ResetRound(true);
             return true;
         }
 
@@ -80,20 +83,22 @@ namespace Baraja
         private void StartRound()
         {
             int player=0;
-            _nameRaisedPlayer = _players[player].Name;
-            while (!_players[player].PlayedRound && _nameRaisedPlayer == _players[player].Name)
+            while (true)
             {
-                if (_players[player].IsFold || _players[player].CurrentMoney == 0)
+                if (_players[player].PlayedRound && _nameRaisedPlayer == _players[player].Name)
+                    break;
+                if (_players[player].IsFold ||_players[player].CurrentMoney == 0)
                 {
-                    player = player >= _players.Count ? 0 : player + 1;
+                    player = player >= _players.Count-1 ? 0 : player + 1;
                     continue;
                 }
                 Console.WriteLine($@"
 Turn player: {_players[player].Name}
 Current Bet: {_currentBet}");
                 _players[player].ShowStats();
+                Console.WriteLine(_publicDeck.ToString());
                 PlayerAction(_players[player]);
-                player = player >= _players.Count ? 0 : player+1;
+                player = player >= _players.Count-1 ? 0 : player+1;
             }
         }
 
@@ -109,8 +114,10 @@ What do you want to do?
                 int option = Tools.GetInt();
 
                 if (option == 1)
+                {
                     if (player.Call(_currentBet))
                         break;
+                }
                 else if (option == 2)
                 {
                     int raisedAmmount = player.Raise(_currentBet);
@@ -130,16 +137,21 @@ What do you want to do?
             }
             player.PlayedRound = true;
         }
-        private void ResetRound()
+        private void ResetRound(bool isHand)
         {
             foreach (PokerPlayer pokerPlayer in _players)
             {
                 pokerPlayer.PlayedRound = false;
-                pokerPlayer.Bet = 0;
-                pokerPlayer.IsFold=false;
-            }
+                if (isHand)
+                {
+                    pokerPlayer.Bet = 0;
+                    pokerPlayer.IsFold = false;
+                }
 
-            _currentBet = 0;
+            }
+            if (isHand)
+                _currentBet = 0;
+
         }
         private void CreatePlayers()
         {
