@@ -91,5 +91,82 @@ Tried Bet: {ammount}");
             return ammountToRise;
                 
         }
+        public (eHandRank handRank,List<int>cardsValue) EvaluateHand(List<Card>TableCards)
+        {
+            eHandRank rank;
+            List<Card> cardsToEvaluate = new List<Card>();
+            List<int> hightCards = new List<int>();
+            cardsToEvaluate.AddRange(TableCards);
+            cardsToEvaluate.AddRange(Hand.Cards);
+            var values = cardsToEvaluate.Select(card => card.Number).OrderByDescending(v => v).ToList();
+            var suits = cardsToEvaluate.Select(card => card.Suit).ToList();
+            bool isFlush = suits.Distinct().Count() == 1;
+            bool isStraight = values.Distinct().Count() == 5 && values.Max() - values.Min() == 4;
+
+            var valueGroups = values.GroupBy(v => v).OrderByDescending(g => g.Count()).ThenByDescending(g => g.Key).ToList();
+
+            if (isFlush && isStraight)
+            {
+                rank = eHandRank.StraightFlush;
+                hightCards = values;
+            }
+            else if (valueGroups[0].Count() == 4)
+            {
+                rank = eHandRank.FourOfAKind;
+                hightCards = valueGroups.SelectMany(g => g).ToList();
+            }
+            else if (valueGroups[0].Count() == 3 && valueGroups[1].Count() == 2)
+            {
+                rank = eHandRank.FullHouse;
+                hightCards = valueGroups.SelectMany(g => g).ToList();
+            }
+            else if (isFlush)
+            {
+                rank = eHandRank.Flush;
+                hightCards = values;
+            }
+            else if (isStraight)
+            {
+                rank = eHandRank.Straight;
+                hightCards = values;
+            }
+            else if (valueGroups[0].Count() == 3)
+            {
+                rank = eHandRank.ThreeOfAKind;
+                hightCards = valueGroups.SelectMany(g => g).ToList();
+            }
+            else if (valueGroups[0].Count() == 2 && valueGroups[1].Count() == 2)
+            {
+                rank = eHandRank.TwoPair;
+                hightCards = valueGroups.SelectMany(g => g).ToList();
+            }
+            else if (valueGroups[0].Count() == 2)
+            {
+                rank = eHandRank.OnePair;
+                hightCards = valueGroups.SelectMany(g => g).ToList();
+            }
+            else
+            {
+                rank = eHandRank.HighCard;
+                hightCards = values;
+            }
+
+            return (rank, hightCards);
+        }
+       public enum eHandRank
+        {
+            HighCard,
+            OnePair,
+            TwoPair,
+            ThreeOfAKind,
+            Straight,
+            Flush,
+            FullHouse,
+            FourOfAKind,
+            StraightFlush
+        }
+
     }
+
 }
+

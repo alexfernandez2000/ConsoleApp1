@@ -17,7 +17,7 @@ namespace Baraja
         {
             Cards = new List<Card>();
             foreach (Card.eSuit suit in _pokerDeck)
-                for (int i = 1; i < 14; i++)
+                for (int i = 2; i < 15; i++)
                     Cards.Add(new Card(i, suit));
             return this;
 

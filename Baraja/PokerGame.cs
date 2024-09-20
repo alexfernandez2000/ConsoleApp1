@@ -47,11 +47,14 @@ namespace Baraja
                 }
                 StartRound();
                 if (IsWinByFold())
-                    break;
+                    return;
                 ResetRound(false);
                 if (round==0)
                     DealCards();
+                if (round == _rounds-1)
+                    break;
             }
+            CompareHands();
             
         }
 
@@ -167,5 +170,41 @@ What do you want to do?
                 _players.Add(player);
             }
         }
+#region HandComparer
+        private void CompareHands()
+        {
+            PokerPlayer winner= null;
+            foreach (PokerPlayer player in _players.Where(x=>!x.IsFold))
+            {
+                if (winner == null)
+                    winner = player;
+                else
+                {
+                    if (ComparePlayers(player, winner)==1)
+                            winner = player;                    
+                }
+            }
+            Console.WriteLine($"Winner: {winner.Name}");
+            winner.CurrentMoney = GetTotalBet();
+        }
+        private int ComparePlayers(PokerPlayer player,PokerPlayer playerToCompare)
+        {
+            var valuePlayer= player.EvaluateHand(_publicDeck.Cards);
+            var valuePlayerToCompare = playerToCompare.EvaluateHand(_publicDeck.Cards);
+
+            if (valuePlayer.handRank != valuePlayerToCompare.handRank)
+                return valuePlayer.handRank > valuePlayerToCompare.handRank ? 1 : -1;
+
+            for (int i = 0; i < valuePlayer.cardsValue.Count; i++)
+            {
+                if (valuePlayer.cardsValue[i] != valuePlayerToCompare.cardsValue[i])
+                    return valuePlayer.cardsValue[i] > valuePlayerToCompare.cardsValue[i] ? 1 : -1;
+            }
+
+            return 0;
+
+        }
+
+        #endregion
     }
 }
