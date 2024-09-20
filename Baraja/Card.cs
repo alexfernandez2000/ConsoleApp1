@@ -23,15 +23,15 @@
 
         public enum eSuit
         {
-            Clubs,//Bastos
+            Batons,//Bastos
             Gold,//Oro
             Swords,//Espadas
             Cups,//Copas
             Jocker,
-            Corazones,
-            Diamantes,
-            Treboles,
-            Picas
+            Hearts,
+            Diamonds,
+            Clubs,
+            Spades
         }
 
     }

@@ -6,8 +6,8 @@ namespace Baraja
     public class Deck
     {
         public List<Card> Cards {get; set; }
-        private readonly List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Clubs,Card.eSuit.Swords,Card.eSuit.Cups, Card.eSuit.Gold };
-        private readonly List<Card.eSuit> _pokerDeck = new List<Card.eSuit>() { Card.eSuit.Corazones,Card.eSuit.Diamantes,Card.eSuit.Picas,Card.eSuit.Treboles };
+        private readonly List<Card.eSuit> _spanishDeck=new List<Card.eSuit>(){Card.eSuit.Batons,Card.eSuit.Swords,Card.eSuit.Cups, Card.eSuit.Gold };
+        private readonly List<Card.eSuit> _pokerDeck = new List<Card.eSuit>() { Card.eSuit.Diamonds,Card.eSuit.Clubs,Card.eSuit.Hearts,Card.eSuit.Spades };
         public Deck()
         {
             Cards=new List<Card>();
