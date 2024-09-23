@@ -9,6 +9,11 @@
         {
             return Longitud * Ancho;
         }
+        protected override double CalcularPerimetro()
+        {
+            return 2*(Longitud+Ancho);
+        }
+
 
     }
 }

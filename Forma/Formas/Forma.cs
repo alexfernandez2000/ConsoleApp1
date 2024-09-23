@@ -14,6 +14,13 @@ namespace Forma.Formas
         }
         protected virtual double CalcularArea ()
         { return -1; }
+        public double CalculatePerimetro()
+        {
+            return CalcularPerimetro();
+        }
+        protected virtual double CalcularPerimetro()
+        { return -1; }
+
 
     }
 }

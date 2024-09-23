@@ -19,5 +19,15 @@ namespace Forma
             }            
             return total;
         }
+        public double CalcularPerimetroTotal()
+        {
+            double total = 0;
+            foreach (Forma2D item in Formas)
+            {
+                total += item.CalculatePerimetro();
+            }
+            return total;
+        }
+
     }
 }

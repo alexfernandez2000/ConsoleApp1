@@ -10,6 +10,11 @@ namespace Forma.Formas
         {
             return Math.PI * (Radio * Radio);
         }
+        protected override double CalcularPerimetro()
+        {
+            return 2*Math.PI*Radio;
+        }
+
 
     }
 }

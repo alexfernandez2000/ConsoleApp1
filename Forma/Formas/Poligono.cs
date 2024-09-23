@@ -8,9 +8,12 @@ namespace Forma.Formas
         public double LongitudLados { get; set; }
 
         protected override double CalcularArea() { 
-            return GetPerimetro() * GetApotema() / 2; 
+            return CalcularPerimetro() * GetApotema() / 2; 
         }
-        private double GetPerimetro() => Lados * LongitudLados;
+        protected override double CalcularPerimetro()
+        {
+            return Lados * LongitudLados;
+        }
         private double GetApotema()=> LongitudLados / (2 * Math.Tan(Math.PI / Lados));
     }
 }

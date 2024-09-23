@@ -10,5 +10,11 @@ namespace Forma.Formas
         {
             return  Plano* Ancho / 2;
         }
+        protected override double CalcularPerimetro()   
+        {
+            return Plano+Ancho+Ancho;
+        }
+
+
     }
 }

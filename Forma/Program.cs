@@ -15,10 +15,13 @@ namespace Forma
             Poligono poligono = new Poligono() {Lados=5,LongitudLados=3};
             diagrama.Formas.Add(rectangulo);
             Console.WriteLine($"Area diagrama {diagrama.CalcularAreaTotal()}");
+            Console.WriteLine($"Perimetro diagrama {diagrama.CalcularPerimetroTotal()}");
             diagrama.Formas.Add(circulo);
             diagrama.Formas.Add(triangulo);
             diagrama.Formas.Add(poligono);
             Console.WriteLine($"Area diagrama {diagrama.CalcularAreaTotal()}");
+            Console.WriteLine($"Perimetro diagrama {diagrama.CalcularPerimetroTotal()}");
+
             Console.ReadLine();
         }
 
