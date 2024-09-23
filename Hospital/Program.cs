@@ -23,6 +23,21 @@ namespace Hospital
                 {
                     case eOptions.AltaMedico:
                         break;
+                    case eOptions.AltaPaciente:
+                        break;
+                    case eOptions.AltaAdministrativo:
+                        break;
+                    case eOptions.ListarMedicos:
+                        break;
+                    case eOptions.ListarPacientesMedico:
+                        break;
+                    case eOptions.EliminarPaciente:
+                        break;
+                    case eOptions.ListarPersonasHospital:
+                        break;
+                    default:
+                        Console.WriteLine("Opcion invalida");
+                        break;
                 }
             }
 
@@ -30,14 +45,14 @@ namespace Hospital
 
         private static eOptions GetOption()
         {
-            eOptions option;
-            while (Enum.TryParse<eOptions>(Tools.GetInt().ToString(), out option))
+            while (true)
             {
-                Console.WriteLine("Opcion invalida");
+                if (Enum.TryParse<eOptions>(Tools.GetInt().ToString(), out eOptions option))
+                {
+                    return option;
+                }
+                    Console.WriteLine("Conversión fallida.");
             }
-
-            return option;
-
         }
         //Crear una aplicación de consola, con un menú, que permita: 
         //• Dar de alta un medico 
