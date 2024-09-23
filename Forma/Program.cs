@@ -1,28 +1,94 @@
 ﻿
 using Forma.Formas;
 using System;
+using System.Collections.Generic;
+using Baraja;
 
 namespace Forma
 {
     internal class Program
     {
+        private static Random _random = new Random();
         static void Main(string[] args)
         {
             Diagrama diagrama = new Diagrama();
-            Circulo circulo = new Circulo() { Radio=10};
-            Triangulo triangulo = new Triangulo() { Lado1 = 2, Lado2= 2,Lado3 = 2};
-            Rectangulo rectangulo = new Rectangulo() { Longitud = 2, Ancho = 2 };
-            Poligono poligono = new Poligono() {Lados=5,LongitudLados=3};
-            diagrama.Formas.Add(rectangulo);
-            Console.WriteLine($"Area diagrama {diagrama.CalcularAreaTotal()}");
-            Console.WriteLine($"Perimetro diagrama {diagrama.CalcularPerimetroTotal()}");
-            diagrama.Formas.Add(circulo);
-            diagrama.Formas.Add(triangulo);
-            diagrama.Formas.Add(poligono);
+            diagrama.Formas = CrearFiguras2D();
             Console.WriteLine($"Area diagrama {diagrama.CalcularAreaTotal()}");
             Console.WriteLine($"Perimetro diagrama {diagrama.CalcularPerimetroTotal()}");
 
             Console.ReadLine();
+        }
+
+        private static List<Forma2D> CrearFiguras2D()
+        {
+            List<Forma2D> formas2d = new List<Forma2D>();
+            while (true)
+            {
+                Console.WriteLine(@"
+1: Añadir circulo random
+2: Añadir Rectangulo
+3: Añadir Triangulo
+4: Añadir Rombo
+5: Añadir Poligono
+6: Añadir Eliplse");
+                int Opcion = Tools.GetInt();
+                switch (Opcion)
+                {
+                    case 1:
+                        formas2d.Add(CirculoRandom());
+                        break;
+                    case 2:
+                        formas2d.Add(RectanguloRandom());
+                        break;
+                    case 3:
+                        formas2d.Add(TrianguloRandom());
+                        break;
+                    case 4:
+                        formas2d.Add(RomboRandom());
+                        break;
+                    case 5:
+                        formas2d.Add(PoligonoRandom());
+                        break;
+                    case 6:
+                        formas2d.Add(ElipseRandom());
+                        break;
+                }
+
+                if (Opcion == 0)
+                    break;
+            }
+            return formas2d;
+        }
+
+        private static Forma2D TrianguloRandom()
+        {
+            return new Triangulo() { Lado1 = _random.Next(1, 10), Lado2 = _random.Next(1, 10), Lado3 = _random.Next(1, 10) };
+        }
+
+        private static Forma2D RomboRandom()
+        {
+            return new Rombo() { Lado = _random.Next(1, 10) ,diagonal1 = _random.Next(1, 10) ,diagonal2 = _random.Next(1, 10) };
+        }
+
+        private static Forma2D PoligonoRandom()
+        {
+            return new Poligono() {  Lados= _random.Next(1, 10), LongitudLados = _random.Next(1, 10) };
+        }
+
+        private static Forma2D ElipseRandom()
+        {
+            return new Elipse(){EjeMayor = _random.Next(1, 10) ,EjeMenor = _random.Next(1, 10) };
+        }
+
+        private static Forma2D RectanguloRandom()
+        {
+           return new Rectangulo() { Longitud = _random.Next(1, 10), Ancho = _random.Next(1, 10) };
+        }
+
+        private static Circulo CirculoRandom()
+        {
+            return  new Circulo() { Radio = _random.Next(1,10) };
+            ;
         }
 
     }
