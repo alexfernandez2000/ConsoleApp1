@@ -62,6 +62,8 @@ namespace Forma
 
         private static Forma2D TrianguloRandom()
         {
+            var test=new Triangulo() { Lado1 = 0, Lado2 = 0, Lado3 = 0 };
+            var area = test.CalcularArea();
             return new Triangulo() { Lado1 = _random.Next(1, 10), Lado2 = _random.Next(1, 10), Lado3 = _random.Next(1, 10) };
         }
 
