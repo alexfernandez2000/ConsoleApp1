@@ -15,7 +15,7 @@ namespace Forma
             double total=0;
             foreach (Forma2D item in Formas)
             {
-                total += item.CalculateArea();
+                total += item.CalcularArea();
             }            
             return total;
         }
@@ -24,7 +24,7 @@ namespace Forma
             double total = 0;
             foreach (Forma2D item in Formas)
             {
-                total += item.CalculatePerimetro();
+                total += item.CalcularPerimetro();
             }
             return total;
         }

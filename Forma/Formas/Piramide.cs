@@ -6,7 +6,7 @@ namespace Forma.Formas
     {
         public double Lado { get; set; }
         public double Altura { get; set; }
-        protected override double CalcularArea ()
+        public override double CalcularArea ()
         {
             double areaBase = AreaBase(Lado);
             double areaLateral = AreaLateral(Lado, Altura);

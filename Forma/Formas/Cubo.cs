@@ -9,7 +9,7 @@ namespace Forma.Formas
      class Cubo : Forma3D
     {
         public double Lado { get; set; }
-        protected override double CalcularArea()
+        public override double CalcularArea()
         {
             return 6 * Math.Pow(Lado, 2);
         }

@@ -8,17 +8,9 @@ namespace Forma.Formas
 {
     class Forma
     {
-        public double CalculateArea()
-        {
-            return CalcularArea();
-        }
-        protected virtual double CalcularArea ()
+        public virtual double CalcularArea ()
         { return -1; }
-        public double CalculatePerimetro()
-        {
-            return CalcularPerimetro();
-        }
-        protected virtual double CalcularPerimetro()
+        public virtual double CalcularPerimetro()
         { return -1; }
 
 

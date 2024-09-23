@@ -9,7 +9,7 @@ namespace Forma.Formas
      class Esfera:Forma3D
     {
         public double RadioEsfera { get; set; }
-        protected override double CalcularArea() 
+        public override double CalcularArea() 
         { 
             return 4 * Math.PI * Math.Pow(RadioEsfera, 2);
         }

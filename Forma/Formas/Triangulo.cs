@@ -1,20 +1,28 @@
 ﻿
+using System;
+
 namespace Forma.Formas
 {
-     class Triangulo : FormaGeometrica
+     class Triangulo : Forma2D
     {
-        public double Plano { get; set; }
-        public double Ancho { get; set; }
+        public double Lado1 { get; set; }
+        public double Lado2 { get; set; }
+        public double Lado3 { get; set; }
 
-        protected override double CalcularArea()
+        public override double CalcularArea()
         {
-            return  Plano* Ancho / 2;
+            double semiperimetro = CalcularSemiperimetro();
+            return  Math.Sqrt(semiperimetro*(semiperimetro*Lado1)*(semiperimetro*Lado2)*(semiperimetro*Lado3));
         }
-        protected override double CalcularPerimetro()   
+        public override double CalcularPerimetro()   
         {
-            return Plano+Ancho+Ancho;
+            return Lado1+Lado2+Lado3;
         }
 
+        private double CalcularSemiperimetro()
+        {
+            return (Lado1 + Lado2 + Lado3) / 2;
+        }
 
     }
 }

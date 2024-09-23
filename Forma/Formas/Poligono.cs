@@ -2,15 +2,15 @@
 
 namespace Forma.Formas
 {
-     class Poligono: FormaGeometrica
+     class Poligono: Forma2D
     {
         public double Lados { get; set; }
         public double LongitudLados { get; set; }
 
-        protected override double CalcularArea() { 
+        public override double CalcularArea() { 
             return CalcularPerimetro() * GetApotema() / 2; 
         }
-        protected override double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             return Lados * LongitudLados;
         }

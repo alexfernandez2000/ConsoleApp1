@@ -50,8 +50,6 @@
     <Compile Include="Formas\Forma.cs" />
     <Compile Include="Formas\Forma2D.cs" />
     <Compile Include="Formas\Forma3D.cs" />
-    <Compile Include="Formas\FormaGeometrica.cs" />
-    <Compile Include="Formas\Malla.cs" />
     <Compile Include="Formas\Piramide.cs" />
     <Compile Include="Formas\Poligono.cs" />
     <Compile Include="Formas\Rectangulo.cs" />

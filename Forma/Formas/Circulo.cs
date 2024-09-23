@@ -2,15 +2,15 @@
 
 namespace Forma.Formas
 {
-     class Circulo: FormaGeometrica
+     class Circulo: Forma2D
     {
         public double Radio { get; set; }
 
-        protected override double CalcularArea()
+        public override double CalcularArea()
         {
             return Math.PI * (Radio * Radio);
         }
-        protected override double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             return 2*Math.PI*Radio;
         }
