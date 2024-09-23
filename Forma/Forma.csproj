@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Diagrama.cs" />
     <Compile Include="Formas\Circulo.cs" />
+    <Compile Include="Formas\Cuadrado.cs" />
     <Compile Include="Formas\Cubo.cs" />
+    <Compile Include="Formas\Elipse.cs" />
     <Compile Include="Formas\Esfera.cs" />
     <Compile Include="Formas\Forma.cs" />
     <Compile Include="Formas\Forma2D.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Formas\Piramide.cs" />
     <Compile Include="Formas\Poligono.cs" />
     <Compile Include="Formas\Rectangulo.cs" />
+    <Compile Include="Formas\Rombo.cs" />
     <Compile Include="Formas\Triangulo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
