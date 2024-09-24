@@ -8,6 +8,10 @@ namespace Hospital
 {
     internal class Administrativo:Personal
     {
+        public Administrativo():base()
+        {
+            
+        }
         public override string ToString()
         {
             return base.ToString() + $"\n Administrativo que administra cosas administrables";

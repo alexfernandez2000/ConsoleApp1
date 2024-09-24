@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Hospital
     internal class Medico: Personal
     {
         public List<Paciente>ListaPacientes { get; set; }
-        public Medico()
+        public Medico():base()
         {
             ListaPacientes = new List<Paciente>();
         }
@@ -17,11 +18,15 @@ namespace Hospital
         {
             string pacientes = "";
             ListaPacientes.ForEach(x => pacientes += x.ToString());
-            return base.ToString() + $@"
-Personal Medico
-Lista de pacientes :
-{pacientes}";
+            return base.ToString() + $"Personal Medico";
         }
-
+        public string GetListaPacientes()
+        {
+            string pacientes = "";
+            ListaPacientes.ForEach(x => pacientes += x.ToString());
+            pacientes = $@"Lista de pacientes:
+            {pacientes}";
+            return pacientes;
+        }
     }
 }

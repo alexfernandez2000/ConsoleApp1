@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baraja;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,13 @@ namespace Hospital
     abstract class Personal:Persona
     {
         public string Hospital {  get; set; }
+        protected Personal():base()
+        {
+            Hospital = Tools.ReadConsoleWord("Nombre del hospital: ");
+        }
         public override string ToString()
         {
-            return base.ToString()+$"\nPersonal del hospital:{Hospital}";
+            return base.ToString()+$"Personal del hospital:{Hospital}\n";
         }
     }
 }
