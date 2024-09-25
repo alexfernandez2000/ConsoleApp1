@@ -30,7 +30,7 @@ namespace Hospital
                         _personas.Add(new Medico());
                         break;
                     case eOptions.AltaPaciente:
-                        _personas.Add(new Paciente(BuscarMedico()));
+                        _personas.Add(new Paciente(BuscarPersona<Medico>()));
                         break;
                     case eOptions.AltaAdministrativo:
                         _personas.Add(new Administrativo());
@@ -53,50 +53,32 @@ namespace Hospital
                 }
             }
         }
-        private static Medico BuscarMedico()
-        {
-            while (true)
-            {
-                string name = Tools.ReadConsoleWord("Nombre del medico");
-                Medico medico = (Medico)_personas.Where(x => x.Name == name && x is Medico).FirstOrDefault();
-                if (medico != null)
-                    return medico;
-            }
-        }
-        private static Paciente BuscarPaciente()
-        {
-            while (true)
-            {
-                string name = Tools.ReadConsoleWord("Nombre del paciente");
-                Paciente paciente = (Paciente)_personas.Where(x => x.Name == name && x is Paciente).FirstOrDefault();
-                if (paciente != null)
-                    return paciente;
-            }
-        }
         private static T BuscarPersona<T>() where T : Persona
         {
             while (true)
             {
                 string name = Tools.ReadConsoleWord($"Nombre del {typeof(T)}");
-                T personab =  (T)_personas.FirstOrDefault(x => name == x.Name && x is T);
-                if (personab != null)
-                    return personab;
+                T persona =  (T)_personas.FirstOrDefault(x => name == x.Name && x is T);
+                if (persona != null)
+                    return persona;
             }
         }
         private static void ListarPersonas<T>() where T :Persona
         {
-            foreach (T persona in _personas.Where(x=> x is T))
+            foreach (var persona1 in _personas.Where(x=> x is T))
+            {
+                var persona = (T)persona1;
                 Console.WriteLine(persona.ToString());
-
+            }
         }
         private static void ListarPacientesMedico()
         {
-            Medico medico = BuscarMedico();
+            Medico medico = BuscarPersona<Medico>();
             Console.WriteLine(medico.GetListaPacientes());
         }
         private static void EliminarPaciente()
         {
-            Paciente paciente = BuscarPaciente();
+            Paciente paciente = BuscarPersona<Paciente>();
             paciente.DarDeBaja();
             _personas.Remove(paciente);
 

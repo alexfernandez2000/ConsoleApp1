@@ -11,6 +11,25 @@ namespace Baraja
     internal class Tools
     {
         private static string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\bbddTemporal.txt";
+        private static Random _random = new Random();
+        public static string GenerarCadenaAleatoria(int longitud)
+        {
+            // Conjunto de caracteres que se usarán para el nombre de usuario
+            const string caracteres = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+            char[] resultado = new char[longitud];
+            for (int i = 0; i < longitud; i++)
+            {
+                resultado[i] = caracteres[_random.Next(caracteres.Length)];
+            }
+
+            return new string(resultado);
+        }
+
+        public static int GetRandomInt(int min,int max)
+        {
+            return _random.Next(min, max);
+        }
         public static int GetInt()
         {
             while (true)
