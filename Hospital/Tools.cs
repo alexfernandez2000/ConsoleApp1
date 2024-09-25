@@ -30,11 +30,11 @@ namespace Baraja
         {
             return _random.Next(min, max);
         }
-        public static int GetInt()
+        public static int GetInt(string? text=null)
         {
             while (true)
             {
-                if (int.TryParse(ReadConsoleWord("Insert number"), out int number))
+                if (int.TryParse(ReadConsoleWord(text??"Insert number"), out int number))
                     return number;
                 Console.WriteLine("Invalid number");
             }

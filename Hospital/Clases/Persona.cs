@@ -12,17 +12,30 @@ namespace Hospital
         public string Name { get; set; }
         public string Telefono { get; set; }
         public string CorreoElectronico { get; set; }
-        public string CodigoPostal { get; set; }
-        public Persona()
+        public int Edad { get; set; }
+
+        protected Persona()
         {
             Name=Tools.ReadConsoleWord("Nombre de la persona: ");
-            Telefono = Tools.GetRandomInt(1000000000, 999999999).ToString();
+            Telefono = Tools.GetRandomInt(100000000, 999999999).ToString();
             CorreoElectronico = $"{Name}@hotmail.com";
-            CodigoPostal= Tools.GetRandomInt(10000, 99999).ToString();
+            Edad= Tools.GetRandomInt(20,100);
+        }
+
+         public virtual void ModificarDatos()
+        {
+            Name = Tools.ReadConsoleWord("Nombre de la persona: ");
+            Telefono = Tools.GetInt("Numero de telefono").ToString();
+            CorreoElectronico = Tools.ReadConsoleWord("Correo electronico: ");
+            Edad = Tools.GetInt("Edad: ");
         }
         public override string ToString()
         {
-            return $"Humano llamado {Name}";
+            return $@"
+Humano llamado: {Name}
+Edad: {Edad}
+Telefono: {Telefono}
+Correo Electronico: {CorreoElectronico}";
         }
 
     }

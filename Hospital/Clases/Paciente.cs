@@ -6,10 +6,6 @@ namespace Hospital
     {
         public Medico Medico { get; set; }
 
-        public Paciente(Medico medico):base()
-        {
-            medico.AltaPaciente(this);
-        }
         public override string ToString()
         {
             return base.ToString() + $"Paciente del medico: {Medico.Name}";

@@ -10,6 +10,8 @@ namespace Hospital
     internal class Medico: Personal
     {
         public List<Paciente>ListaPacientes { get; set; }
+        public string Especialidad { get; set; }
+        public int Muertes { get; set; }
         public Medico():base()
         {
             ListaPacientes = new List<Paciente>();

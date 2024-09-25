@@ -30,7 +30,7 @@ namespace Hospital
                         _personas.Add(new Medico());
                         break;
                     case eOptions.AltaPaciente:
-                        _personas.Add(new Paciente(BuscarPersona<Medico>()));
+                        AltaPaciente();
                         break;
                     case eOptions.AltaAdministrativo:
                         _personas.Add(new Administrativo());
@@ -47,21 +47,40 @@ namespace Hospital
                     case eOptions.ListarPersonasHospital:
                         ListarPersonas<Persona>();
                         break;
+                    case eOptions.ModificarPersona:
+                        ModificarPersona();
+                        
+                        break;
                     default:
                         Console.WriteLine("Opcion invalida");
                         break;
                 }
             }
         }
+
+        private static void ModificarPersona()
+        {
+            Persona persona = BuscarPersona<Persona>();
+            if (persona!=null)
+                persona.ModificarDatos();
+        }
+
+        private static void AltaPaciente()
+        {
+            Paciente paciente = new Paciente();
+            Medico medico = BuscarPersona<Medico>();
+            if (medico != null)
+                if (medico.AltaPaciente(paciente))
+                    _personas.Add(paciente);
+        }
+
         private static T BuscarPersona<T>() where T : Persona
         {
-            while (true)
-            {
-                string name = Tools.ReadConsoleWord($"Nombre del {typeof(T)}");
+            string name = Tools.ReadConsoleWord($"Nombre del {typeof(T).Name}");
                 T persona =  (T)_personas.FirstOrDefault(x => name == x.Name && x is T);
-                if (persona != null)
-                    return persona;
-            }
+                if (persona == null)
+                    Console.WriteLine($"No se ha encontrado la persona {name} del tipo {typeof(T).BaseType}");
+                return persona;
         }
         private static void ListarPersonas<T>() where T :Persona
         {
@@ -79,9 +98,8 @@ namespace Hospital
         private static void EliminarPaciente()
         {
             Paciente paciente = BuscarPersona<Paciente>();
-            paciente.DarDeBaja();
-            _personas.Remove(paciente);
-
+            if (paciente.DarDeBaja())
+                _personas.Remove(paciente);
         }
         private static eOptions GetOption()
         {
@@ -95,7 +113,8 @@ namespace Hospital
 4: ListarMedicos,
 5: ListarPacientesMedico,
 6: EliminarPaciente,
-7: ListarPersonasHospital
+7: ListarPersonasHospital,
+8: ModificarPersona
 ");
                 if (Enum.TryParse<eOptions>(Tools.GetInt().ToString(), out eOptions option))
                 {
@@ -124,7 +143,8 @@ namespace Hospital
             ListarMedicos,
             ListarPacientesMedico,
             EliminarPaciente,
-            ListarPersonasHospital
+            ListarPersonasHospital,
+            ModificarPersona
         }
     }
 }
