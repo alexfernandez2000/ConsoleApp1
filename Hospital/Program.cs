@@ -9,8 +9,8 @@ namespace Hospital
 {
     internal class Program
     {
-        private readonly string _hospitalName="Shiro";
-        private static List<Persona>_personas = new List<Persona>();
+        private readonly string _hospitalName = "Shiro";
+        private static List<Persona> _personas = new List<Persona>();
         static void Main(string[] args)
         {
             Prueba();
@@ -18,10 +18,14 @@ namespace Hospital
 
         private static void Prueba()
         {
-            while (true)
+            bool continues = true;
+            while (continues)
             {
                 switch (GetOption())
                 {
+                    case eOptions.Finalizar:
+                        continues=false;
+                        break;
                     case eOptions.AltaMedico:
                         _personas.Add(new Medico());
                         break;
@@ -32,7 +36,7 @@ namespace Hospital
                         _personas.Add(new Administrativo());
                         break;
                     case eOptions.ListarMedicos:
-                        ListarMedicos();
+                        ListarPersonas<Medico>();
                         break;
                     case eOptions.ListarPacientesMedico:
                         ListarPacientesMedico();
@@ -41,14 +45,13 @@ namespace Hospital
                         EliminarPaciente();
                         break;
                     case eOptions.ListarPersonasHospital:
-                        ListarPersonasHospital();
+                        ListarPersonas<Persona>();
                         break;
                     default:
                         Console.WriteLine("Opcion invalida");
                         break;
                 }
             }
-
         }
         private static Medico BuscarMedico()
         {
@@ -70,49 +73,53 @@ namespace Hospital
                     return paciente;
             }
         }
-        //private static Persona BuscarPersona<T>(T persona)
-        //{
-        //    while (true)
-        //    {
-        //        string name = Tools.ReadConsoleWord($"Nombre del {persona.GetType()}");
-        //        Persona personab = _personas.OfType<Persona>().Where(x=> name==x.Name);
-        //        if (personab != null)
-        //            return personab;
-        //    }
-        //}
-        private static void ListarMedicos()
+        private static T BuscarPersona<T>() where T : Persona
         {
-            foreach (Medico medico in _personas)
-                Console.WriteLine(medico.ToString());
+            while (true)
+            {
+                string name = Tools.ReadConsoleWord($"Nombre del {typeof(T)}");
+                T personab =  (T)_personas.FirstOrDefault(x => name == x.Name && x is T);
+                if (personab != null)
+                    return personab;
+            }
+        }
+        private static void ListarPersonas<T>() where T :Persona
+        {
+            foreach (T persona in _personas.Where(x=> x is T))
+                Console.WriteLine(persona.ToString());
 
         }
         private static void ListarPacientesMedico()
         {
-            Medico medico=BuscarMedico();
+            Medico medico = BuscarMedico();
             Console.WriteLine(medico.GetListaPacientes());
         }
         private static void EliminarPaciente()
         {
-            Paciente paciente= BuscarPaciente();
+            Paciente paciente = BuscarPaciente();
             paciente.DarDeBaja();
             _personas.Remove(paciente);
-
-        }
-        private static void ListarPersonasHospital()
-        {
-            foreach (Persona persona in _personas)
-                Console.WriteLine(persona.ToString());
 
         }
         private static eOptions GetOption()
         {
             while (true)
             {
+                Console.WriteLine($@"Seleccione una opcion:
+0: Finalizar,
+1: AltaMedico,
+2: AltaPaciente,
+3: AltaAdministrativo,
+4: ListarMedicos,
+5: ListarPacientesMedico,
+6: EliminarPaciente,
+7: ListarPersonasHospital
+");
                 if (Enum.TryParse<eOptions>(Tools.GetInt().ToString(), out eOptions option))
                 {
                     return option;
                 }
-                    Console.WriteLine("Conversión fallida.");
+                Console.WriteLine("Conversión fallida.");
             }
         }
 
@@ -128,6 +135,7 @@ namespace Hospital
 
         private enum eOptions
         {
+            Finalizar,
             AltaMedico,
             AltaPaciente,
             AltaAdministrativo,

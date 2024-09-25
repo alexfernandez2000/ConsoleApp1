@@ -18,12 +18,12 @@ namespace Hospital
         {
             string pacientes = "";
             ListaPacientes.ForEach(x => pacientes += x.ToString());
-            return base.ToString() + $"Personal Medico";
+            return base.ToString() + $"\n Personal Medico";
         }
         public string GetListaPacientes()
         {
             string pacientes = "";
-            ListaPacientes.ForEach(x => pacientes += x.ToString());
+            ListaPacientes.ForEach(x => pacientes += "\nPaciente: "+x.Name);
             pacientes = $@"Lista de pacientes:
             {pacientes}";
             return pacientes;

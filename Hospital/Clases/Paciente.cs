@@ -5,6 +5,8 @@
         public Medico Medico { get; set; }
         public Paciente(Medico medico):base()
         {
+            if (medico.ListaPacientes.Contains(this))
+                return;
             Medico = medico;
             Medico.ListaPacientes.Add(this);
         }

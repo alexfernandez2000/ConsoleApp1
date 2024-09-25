@@ -16,7 +16,7 @@ namespace Hospital
         }
         public override string ToString()
         {
-            return base.ToString()+$"Personal del hospital:{Hospital}\n";
+            return base.ToString()+$"\n Personal del hospital: {Hospital}";
         }
     }
 }
