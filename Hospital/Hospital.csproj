@@ -74,10 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Administrativo.cs" />
+    <Compile Include="Clases\Cita.cs" />
     <Compile Include="Clases\Medico.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\Personal.cs" />
+    <Compile Include="IProcesoCitas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools.cs" />

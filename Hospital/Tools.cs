@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,31 @@ namespace Baraja
     {
         private static string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\bbddTemporal.txt";
         private static Random _random = new Random();
+
+        public static Guid GetGuid()
+        {
+            while (true)
+            {
+                if (Guid.TryParse(ReadConsoleWord("Insert ID?"), out Guid result))
+                    return result;
+            }
+        }
+        public static bool GetBool()
+        {
+            while (true)
+            {
+                if (bool.TryParse(ReadConsoleWord("True o False?").ToLower(), out bool result))
+                    return result;
+            }
+        }
+        public static DateTime GetDate()
+        {
+            while (true)
+            {
+                if (DateTime.TryParseExact(ReadConsoleWord("Insert Date format dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                    return date;
+            }
+        }
         public static string GenerarCadenaAleatoria(int longitud)
         {
             // Conjunto de caracteres que se usarán para el nombre de usuario

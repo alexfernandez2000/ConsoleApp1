@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hospital.Clases;
 
 namespace Hospital
 {
@@ -11,6 +12,7 @@ namespace Hospital
     {
         private readonly string _hospitalName = "Shiro";
         private static List<Persona> _personas = new List<Persona>();
+
         static void Main(string[] args)
         {
             Prueba();
@@ -49,7 +51,12 @@ namespace Hospital
                         break;
                     case eOptions.ModificarPersona:
                         ModificarPersona();
-                        
+                        break;
+                    case eOptions.ConcretarCita:
+                        ConcretarCita();
+                        break;
+                    case eOptions.ModificarCita:
+                        ModificarCita();
                         break;
                     default:
                         Console.WriteLine("Opcion invalida");
@@ -57,7 +64,31 @@ namespace Hospital
                 }
             }
         }
+        //TODO Unificar en una misma funcion la modificacion de cita.
+        private static void ModificarCita()
+        {
+            Paciente paciente = BuscarPersona<Paciente>();
+            if (paciente != null)
+            {
+                paciente.ModificarCita();
+                return;
+            }
+            Medico medico = BuscarPersona<Medico>();
+            if (medico != null)
+                medico.ModificarCita();
+        }
 
+        private static void ConcretarCita()
+        {
+            Paciente paciente = BuscarPersona<Paciente>();
+            if (paciente == null)
+                return;
+            Medico medico = BuscarPersona<Medico>();
+            if (medico == null)
+                return;
+            DateTime fecha= Tools.GetDate();
+            new Cita(medico,paciente,fecha,false);
+        }
         private static void ModificarPersona()
         {
             Persona persona = BuscarPersona<Persona>();
@@ -79,15 +110,15 @@ namespace Hospital
             string name = Tools.ReadConsoleWord($"Nombre del {typeof(T).Name}");
                 T persona =  (T)_personas.FirstOrDefault(x => name == x.Name && x is T);
                 if (persona == null)
-                    Console.WriteLine($"No se ha encontrado la persona {name} del tipo {typeof(T).BaseType}");
+                    Console.WriteLine($"No se ha encontrado la persona {name} del tipo {typeof(T).Name}");
                 return persona;
-        }
+        } 
         private static void ListarPersonas<T>() where T :Persona
         {
             foreach (var persona1 in _personas.Where(x=> x is T))
             {
                 var persona = (T)persona1;
-                Console.WriteLine(persona.ToString());
+                Console.WriteLine(persona);
             }
         }
         private static void ListarPacientesMedico()
@@ -115,6 +146,8 @@ namespace Hospital
 6: EliminarPaciente,
 7: ListarPersonasHospital,
 8: ModificarPersona
+9: ConcretarCita
+10: ModificarCita
 ");
                 if (Enum.TryParse<eOptions>(Tools.GetInt().ToString(), out eOptions option))
                 {
@@ -144,7 +177,9 @@ namespace Hospital
             ListarPacientesMedico,
             EliminarPaciente,
             ListarPersonasHospital,
-            ModificarPersona
+            ModificarPersona,
+            ConcretarCita,
+            ModificarCita
         }
     }
 }

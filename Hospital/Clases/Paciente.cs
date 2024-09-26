@@ -1,11 +1,28 @@
-﻿using System.Net.Configuration;
+﻿using Baraja;
+using Hospital.Clases;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Hospital
 {
     internal class Paciente:Persona
     {
         public Medico Medico { get; set; }
+        public List<Cita>ListaCitas { get; set; }
+        public List<Cita> HistorialCitas { get; set; }
 
+        public Paciente(Medico medico):base()
+        {
+            Medico = medico;
+            HistorialCitas = new List<Cita>();
+            ListaCitas = new List<Cita>();
+        }
+        public Paciente() : base()
+        {
+            HistorialCitas = new List<Cita>();
+            ListaCitas = new List<Cita>();
+        }
         public override string ToString()
         {
             return base.ToString() + $"Paciente del medico: {Medico.Name}";
@@ -18,6 +35,25 @@ namespace Hospital
         public bool DarDeAlta(Medico medico)
         {
             return Medico.AltaPaciente(this);
+        }
+        public void ModificarCita()
+        {
+            Console.WriteLine("Listado de citas:");
+            ListaCitas.ForEach(cita => Console.WriteLine($"{cita.ToString()}\n"));
+            Console.WriteLine("Cita a modificar:");
+            Guid id = Tools.GetGuid();
+            Cita cita = ListaCitas.FirstOrDefault(c => c.Id == id);
+            if (cita == null)
+            {
+                Console.WriteLine("Cita no encontrada");
+                return;
+            }
+            Console.WriteLine("Desea modificarla(True) o cancelarla(False)");
+            if (Tools.GetBool())
+                cita.ModficarCita(Tools.GetDate(), Tools.GetBool());
+            else
+                cita.CancelarCita();
+
         }
     }
 }
