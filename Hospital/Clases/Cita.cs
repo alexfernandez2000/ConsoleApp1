@@ -12,7 +12,10 @@ namespace Hospital.Clases
         public Medico Medico { get; set; }
         public Paciente Paciente { get; set; }
         public DateTime Fecha { get; set; }
+        public string Diagnostico { get; set; }
+        public string Tratamiento { get; set; }
         private bool asistencia;
+
         public bool? Asistencia
         {
             get { return asistencia;}
@@ -45,10 +48,12 @@ namespace Hospital.Clases
             Paciente.ListaCitas.Remove(this);
         }
 
-        public void ModficarCita(DateTime? nuevaFecha=null,bool? asistencia=null)
+        public void ModficarCita(DateTime? nuevaFecha=null,bool? asistencia=null,string tratamiento=null,string diagnostico=null)
         {
             Fecha = nuevaFecha??Fecha;
             Asistencia = asistencia ?? Asistencia;
+            Tratamiento = tratamiento ?? Tratamiento;
+            Diagnostico = diagnostico ?? Diagnostico;
         }
 
         public override string ToString()

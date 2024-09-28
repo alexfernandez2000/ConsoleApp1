@@ -71,7 +71,7 @@ namespace Hospital
             }
             Console.WriteLine("Desea modificarla(True) o cancelarla(False)");
             if (Tools.GetBool())
-                cita.ModficarCita(Tools.GetDate(), Tools.GetBool());
+                cita.ModficarCita(Tools.GetDate(), Tools.GetBool(),Tools.ReadConsoleWord("Tratamiento:"), Tools.ReadConsoleWord("Diagnostico:"));
             else
                 cita.CancelarCita();
         }

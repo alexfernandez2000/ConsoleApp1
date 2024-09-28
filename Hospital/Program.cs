@@ -10,7 +10,6 @@ namespace Hospital
 {
     internal class Program
     {
-        private readonly string _hospitalName = "Shiro";
         private static List<Persona> _personas = new List<Persona>();
 
         static void Main(string[] args)
