@@ -10,22 +10,13 @@ using System.Windows.Forms;
 
 namespace FormsApp
 {
-    public partial class FormPrincipal : Form
+    public partial class BootstrapForm : Form
     {
-        public FormPrincipal()
+        public BootstrapForm()
         {
             InitializeComponent();
         }
-
-        private void ShowAlgo(object sender, EventArgs e)
-        {
-        }
-        private void DateTimeValueChanged(object sender, EventArgs e)
-        {
-            dtStartDate.Format = DateTimePickerFormat.Short;
-        }
-
-        private void Submit(object sender, EventArgs e)
+        private void btnSubmit_Submit(object sender, EventArgs e)
         {
             if (txtTitle.Text!="" && txtDescription.Text!="" && clbEnvironment.CheckedItems!=null) 
             {
@@ -48,6 +39,10 @@ Status: {cbStatus.SelectedItem}
 Percent complete: {numPercentCompleted.Value.ToString()}%
 ");
             }
+        }
+        private void dtStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtStartDate.Format = DateTimePickerFormat.Short;
         }
     }
 }

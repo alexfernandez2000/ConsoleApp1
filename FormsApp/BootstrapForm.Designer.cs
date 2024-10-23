@@ -1,8 +1,6 @@
-﻿using System.Windows.Forms;
-
-namespace FormsApp
+﻿namespace FormsApp
 {
-    partial class FormPrincipal
+    partial class BootstrapForm
     {
         /// <summary>
         /// Required designer variable.
@@ -87,7 +85,7 @@ namespace FormsApp
             // lblCriticity
             // 
             this.lblCriticity.AutoSize = true;
-            this.lblCriticity.Location = new System.Drawing.Point(285, 150);
+            this.lblCriticity.Location = new System.Drawing.Point(266, 150);
             this.lblCriticity.Name = "lblCriticity";
             this.lblCriticity.Size = new System.Drawing.Size(49, 16);
             this.lblCriticity.TabIndex = 3;
@@ -105,7 +103,7 @@ namespace FormsApp
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(93, 372);
+            this.lblStartDate.Location = new System.Drawing.Point(93, 383);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(64, 16);
             this.lblStartDate.TabIndex = 5;
@@ -114,7 +112,7 @@ namespace FormsApp
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(266, 372);
+            this.lblDuration.Location = new System.Drawing.Point(266, 383);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(114, 16);
             this.lblDuration.TabIndex = 6;
@@ -123,7 +121,7 @@ namespace FormsApp
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(93, 461);
+            this.lblStatus.Location = new System.Drawing.Point(93, 470);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(44, 16);
             this.lblStatus.TabIndex = 7;
@@ -132,7 +130,7 @@ namespace FormsApp
             // lblPercent
             // 
             this.lblPercent.AutoSize = true;
-            this.lblPercent.Location = new System.Drawing.Point(266, 461);
+            this.lblPercent.Location = new System.Drawing.Point(266, 470);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(120, 16);
             this.lblPercent.TabIndex = 8;
@@ -203,7 +201,7 @@ namespace FormsApp
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(140, 22);
             this.dtStartDate.TabIndex = 16;
-            this.dtStartDate.ValueChanged += new System.EventHandler(this.DateTimeValueChanged);
+            this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
             // 
             // numDuration
             // 
@@ -263,7 +261,7 @@ namespace FormsApp
             this.btSubmit.TabIndex = 23;
             this.btSubmit.Text = "Submit";
             this.btSubmit.UseVisualStyleBackColor = true;
-            this.btSubmit.Click += new System.EventHandler(this.Submit);
+            this.btSubmit.Click += new System.EventHandler(this.btnSubmit_Submit);
             // 
             // cbLocation
             // 
@@ -307,7 +305,6 @@ namespace FormsApp
             this.Controls.Add(this.lblTitle);
             this.Name = "FormPrincipal";
             this.Text = "FirstForm";
-            this.Click += new System.EventHandler(this.ShowAlgo);
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPercentCompleted)).EndInit();
             this.ResumeLayout(false);
