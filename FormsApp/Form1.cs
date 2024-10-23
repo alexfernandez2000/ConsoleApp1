@@ -37,14 +37,14 @@ namespace FormsApp
 
                 MessageBox.Show($@"
 Title: {txtTitle.Text}
-Location: {cbLocation.SelectedItem.ToString()}
-Type: {cbType.SelectedItem.ToString()}
-Criticity: {cbCriticity.SelectedItem.ToString()}
+Location: {cbLocation.SelectedItem ??"" .ToString()}
+Type: {cbType.SelectedItem ?? "".ToString()}
+Criticity: {cbCriticity.SelectedItem ?? "".ToString()}
 Environment: {environmentText}
 Description: {txtDescription.Text.ToString()}
-Start Date: {dtStartDate.Text.ToString()}
+Start Date: {dtStartDate.Text ?? "".ToString()}
 Duration: {numDuration.Value.ToString()} H
-Status: {cbStatus.SelectedItem.ToString()}
+Status: {cbStatus.SelectedItem ?? "".ToString()}
 Percent complete: {numPercentCompleted.Value.ToString()}%
 ");
             }
