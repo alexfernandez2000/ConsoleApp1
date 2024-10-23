@@ -1,4 +1,6 @@
-﻿namespace FormsApp
+﻿using System;
+
+namespace FormsApp
 {
     partial class BootstrapForm
     {
@@ -202,6 +204,7 @@
             this.dtStartDate.Size = new System.Drawing.Size(140, 22);
             this.dtStartDate.TabIndex = 16;
             this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
+            this.dtStartDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtStartDate_KeyDown);
             // 
             // numDuration
             // 
@@ -275,7 +278,7 @@
             this.cbLocation.Size = new System.Drawing.Size(121, 24);
             this.cbLocation.TabIndex = 24;
             // 
-            // FormPrincipal
+            // BootstrapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,7 +306,7 @@
             this.Controls.Add(this.lblEnvironment);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.lblTitle);
-            this.Name = "FormPrincipal";
+            this.Name = "BootstrapForm";
             this.Text = "FirstForm";
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPercentCompleted)).EndInit();

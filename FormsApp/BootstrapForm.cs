@@ -44,5 +44,14 @@ Percent complete: {numPercentCompleted.Value.ToString()}%
         {
             dtStartDate.Format = DateTimePickerFormat.Short;
         }
+
+        private void dtStartDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Back || e.KeyCode==Keys.Delete)
+            {
+                dtStartDate.CustomFormat = "  ";
+                dtStartDate.Format = DateTimePickerFormat.Custom;
+            }
+        }
     }
 }
