@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModel.Clases
 {
-    internal class Cita
+    public class Cita
     {
         public Guid Id { get; set; }
         public Medico Medico { get; set; }

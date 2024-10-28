@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModel
 {
-    abstract class Persona
+    public abstract class Persona
     {
         public string Name { get; set; }
         public string Telefono { get; set; }
@@ -16,7 +16,7 @@ namespace HospitalModel
 
         protected Persona()
         {
-            Name=Tools.ReadConsoleWord("Nombre de la persona: ");
+            Name = Tools.GenerarCadenaAleatoria(8);
             Telefono = Tools.GetRandomInt(100000000, 999999999).ToString();
             CorreoElectronico = $"{Name}@hotmail.com";
             Edad= Tools.GetRandomInt(20,100);

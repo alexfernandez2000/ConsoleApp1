@@ -6,7 +6,7 @@ using HospitalModel.Clases;
 
 namespace HospitalModel
 {
-    internal class Medico: Personal
+    public class Medico: Personal
     {
         public List<Paciente>ListaPacientes { get; set; }
         public List<Cita>ListaCitas { get; set; }

@@ -11,7 +11,6 @@ namespace HospitalGrafico
             _hospital = new Hospital();
             InitializeComponent();
         }
-
         private void btnMedicos_Click(object sender, EventArgs e)
         {
             MedicoForm medicoForm = new MedicoForm(_hospital);

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HospitalModel
 {
-    internal class Paciente:Persona
+    public class Paciente:Persona
     {
         public Medico Medico { get; set; }
         public List<Cita>ListaCitas { get; set; }

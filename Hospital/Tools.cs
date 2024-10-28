@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Baraja
 {
-    internal class Tools
+    public class Tools
     {
         private static string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\bbddTemporal.txt";
         private static Random _random = new Random();

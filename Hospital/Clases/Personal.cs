@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModel
 {
-    abstract class Personal:Persona
+    public abstract class Personal:Persona
     {
         public string Hospital {  get; set; }
         public string TelefonoTrabajo { get; set; }

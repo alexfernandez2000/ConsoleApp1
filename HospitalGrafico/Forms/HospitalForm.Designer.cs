@@ -39,7 +39,7 @@
             // 
             // btnCitas
             // 
-            this.btnCitas.Location = new System.Drawing.Point(590, 12);
+            this.btnCitas.Location = new System.Drawing.Point(507, 12);
             this.btnCitas.Name = "btnCitas";
             this.btnCitas.Size = new System.Drawing.Size(95, 59);
             this.btnCitas.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // btnMedicos
             // 
-            this.btnMedicos.Location = new System.Drawing.Point(259, 12);
+            this.btnMedicos.Location = new System.Drawing.Point(176, 12);
             this.btnMedicos.Name = "btnMedicos";
             this.btnMedicos.Size = new System.Drawing.Size(95, 59);
             this.btnMedicos.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(360, 12);
+            this.button2.Location = new System.Drawing.Point(277, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 59);
             this.button2.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(475, 12);
+            this.button3.Location = new System.Drawing.Point(392, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 59);
             this.button3.TabIndex = 3;
@@ -86,7 +86,7 @@
             this.panForm.Size = new System.Drawing.Size(799, 363);
             this.panForm.TabIndex = 4;
             // 
-            // Hospital
+            // HospitalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -96,9 +96,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnMedicos);
             this.Controls.Add(this.btnCitas);
-            this.Name = "Hospital";
+            this.Name = "HospitalForm";
             this.Text = "Hospital";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
