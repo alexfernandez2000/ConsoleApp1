@@ -19,9 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baraja", "Baraja\Baraja.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forma", "Forma\Forma.csproj", "{1FCE49C1-466F-45C8-8C6F-8FAACE7B98FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital", "Hospital\Hospital.csproj", "{49A599A6-73D1-477F-97DA-AEF5F6C472A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalModel", "Hospital\HospitalModel.csproj", "{49A599A6-73D1-477F-97DA-AEF5F6C472A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsApp", "FormsApp\FormsApp.csproj", "{17E7128E-CE4B-4E14-BEE5-FCC311F3060E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalGrafico", "HospitalGrafico\HospitalGrafico.csproj", "{B0E2D0B0-AD50-4ADC-A195-49AF035204BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{17E7128E-CE4B-4E14-BEE5-FCC311F3060E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E7128E-CE4B-4E14-BEE5-FCC311F3060E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17E7128E-CE4B-4E14-BEE5-FCC311F3060E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E2D0B0-AD50-4ADC-A195-49AF035204BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E2D0B0-AD50-4ADC-A195-49AF035204BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E2D0B0-AD50-4ADC-A195-49AF035204BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E2D0B0-AD50-4ADC-A195-49AF035204BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

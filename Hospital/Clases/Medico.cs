@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Baraja;
-using Hospital.Clases;
+using HospitalModel.Clases;
 
-namespace Hospital
+namespace HospitalModel
 {
     internal class Medico: Personal
     {

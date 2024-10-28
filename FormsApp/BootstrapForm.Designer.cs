@@ -201,6 +201,7 @@ namespace FormsApp
             this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStartDate.Location = new System.Drawing.Point(94, 417);
             this.dtStartDate.Name = "dtStartDate";
+            this.dtStartDate.ShowCheckBox = true;
             this.dtStartDate.Size = new System.Drawing.Size(140, 22);
             this.dtStartDate.TabIndex = 16;
             this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);

@@ -1,10 +1,10 @@
 ﻿using Baraja;
-using Hospital.Clases;
+using HospitalModel.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hospital
+namespace HospitalModel
 {
     internal class Paciente:Persona
     {
