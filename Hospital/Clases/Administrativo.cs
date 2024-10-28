@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModel
 {
-    internal class Administrativo:Personal
+    public class Administrativo:Personal
     {
         public Administrativo():base()
         {

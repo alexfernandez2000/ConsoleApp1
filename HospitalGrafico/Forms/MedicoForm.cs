@@ -33,6 +33,7 @@ namespace HospitalGrafico
             foreach (DataGridViewRow row in dgvMedicos.SelectedRows)
             {
                 Medico medicoEliminar = row.DataBoundItem as Medico;
+
                 _hospital.EliminarMedico(medicoEliminar);
                 RefrescarLista();
             }
