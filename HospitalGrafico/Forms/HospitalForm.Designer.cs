@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCitas = new System.Windows.Forms.Button();
             this.btnMedicos = new System.Windows.Forms.Button();
             this.btnAdministrativo = new System.Windows.Forms.Button();
             this.btnPaciente = new System.Windows.Forms.Button();
@@ -37,19 +36,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCitas
-            // 
-            this.btnCitas.Location = new System.Drawing.Point(507, 12);
-            this.btnCitas.Name = "btnCitas";
-            this.btnCitas.Size = new System.Drawing.Size(95, 59);
-            this.btnCitas.TabIndex = 0;
-            this.btnCitas.Text = "Citas";
-            this.btnCitas.UseVisualStyleBackColor = true;
-            this.btnCitas.Click += new System.EventHandler(this.btnCitas_Click);
-            // 
             // btnMedicos
             // 
-            this.btnMedicos.Location = new System.Drawing.Point(176, 12);
+            this.btnMedicos.Location = new System.Drawing.Point(233, 12);
             this.btnMedicos.Name = "btnMedicos";
             this.btnMedicos.Size = new System.Drawing.Size(95, 59);
             this.btnMedicos.TabIndex = 1;
@@ -59,7 +48,7 @@
             // 
             // btnAdministrativo
             // 
-            this.btnAdministrativo.Location = new System.Drawing.Point(277, 12);
+            this.btnAdministrativo.Location = new System.Drawing.Point(334, 12);
             this.btnAdministrativo.Name = "btnAdministrativo";
             this.btnAdministrativo.Size = new System.Drawing.Size(109, 59);
             this.btnAdministrativo.TabIndex = 2;
@@ -69,7 +58,7 @@
             // 
             // btnPaciente
             // 
-            this.btnPaciente.Location = new System.Drawing.Point(392, 12);
+            this.btnPaciente.Location = new System.Drawing.Point(449, 12);
             this.btnPaciente.Name = "btnPaciente";
             this.btnPaciente.Size = new System.Drawing.Size(109, 59);
             this.btnPaciente.TabIndex = 3;
@@ -98,7 +87,6 @@
             this.Controls.Add(this.btnPaciente);
             this.Controls.Add(this.btnAdministrativo);
             this.Controls.Add(this.btnMedicos);
-            this.Controls.Add(this.btnCitas);
             this.Name = "HospitalForm";
             this.Text = "Hospital";
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -107,8 +95,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCitas;
         private System.Windows.Forms.Button btnMedicos;
         private System.Windows.Forms.Button btnAdministrativo;
         private System.Windows.Forms.Button btnPaciente;

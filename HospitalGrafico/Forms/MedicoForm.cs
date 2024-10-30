@@ -53,5 +53,10 @@ namespace HospitalGrafico
             CitaForm citaForm = new CitaForm(medico);
             citaForm.Show();
         }
+
+        private void btnGenerico_Click(object sender, EventArgs e)
+        {
+           new PersonaForm<Medico>(_hospital.GetPersonas<Medico>()).Show();
+        }
     }
 }
