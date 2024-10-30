@@ -35,12 +35,13 @@
             this.btnCitas = new System.Windows.Forms.Button();
             this.cbxMedico = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(322, 79);
+            this.btnEliminar.Location = new System.Drawing.Point(282, 80);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 11;
@@ -50,7 +51,7 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(241, 79);
+            this.btnCrear.Location = new System.Drawing.Point(120, 80);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCrear.TabIndex = 10;
@@ -70,7 +71,7 @@
             // 
             // butListar
             // 
-            this.butListar.Location = new System.Drawing.Point(160, 79);
+            this.butListar.Location = new System.Drawing.Point(39, 80);
             this.butListar.Name = "butListar";
             this.butListar.Size = new System.Drawing.Size(75, 23);
             this.butListar.TabIndex = 8;
@@ -105,11 +106,22 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Medico asignado";
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(201, 80);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 23;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // PacienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxMedico);
             this.Controls.Add(this.btnCitas);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Button btnCitas;
         private System.Windows.Forms.ComboBox cbxMedico;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEditar;
     }
 }

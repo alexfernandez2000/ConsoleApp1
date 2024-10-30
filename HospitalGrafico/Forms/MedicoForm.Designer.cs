@@ -35,7 +35,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCitas = new System.Windows.Forms.Button();
             this.medicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnGenerico = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +52,11 @@
             // 
             // dgvMedicos
             // 
+            this.dgvMedicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMedicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicos.Location = new System.Drawing.Point(25, 169);
             this.dgvMedicos.Name = "dgvMedicos";
+            this.dgvMedicos.ReadOnly = true;
             this.dgvMedicos.RowHeadersWidth = 51;
             this.dgvMedicos.RowTemplate.Height = 24;
             this.dgvMedicos.Size = new System.Drawing.Size(726, 225);
@@ -72,7 +74,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(310, 102);
+            this.btnEliminar.Location = new System.Drawing.Point(391, 102);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
@@ -94,22 +96,22 @@
             // 
             this.medicoBindingSource.DataSource = typeof(HospitalModel.Medico);
             // 
-            // btnGenerico
+            // btnEditar
             // 
-            this.btnGenerico.Location = new System.Drawing.Point(481, 102);
-            this.btnGenerico.Name = "btnGenerico";
-            this.btnGenerico.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerico.TabIndex = 21;
-            this.btnGenerico.Text = "Generico";
-            this.btnGenerico.UseVisualStyleBackColor = true;
-            this.btnGenerico.Click += new System.EventHandler(this.btnGenerico_Click);
+            this.btnEditar.Location = new System.Drawing.Point(310, 102);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 22;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // MedicoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnGenerico);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnCitas);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCrear);
@@ -130,6 +132,6 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCitas;
-        private System.Windows.Forms.Button btnGenerico;
+        private System.Windows.Forms.Button btnEditar;
     }
 }

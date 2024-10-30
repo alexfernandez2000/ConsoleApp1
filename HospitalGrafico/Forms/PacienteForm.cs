@@ -72,5 +72,20 @@ namespace HospitalGrafico
             CitaForm citaForm = new CitaForm(paciente);
             citaForm.Show();
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvPaciente.SelectedRows.Count != 0)
+            {
+                Paciente pacienteEditar = dgvPaciente.SelectedRows[0].DataBoundItem as Paciente;
+                PersonaForm<Paciente> persona = new PersonaForm<Paciente>(pacienteEditar);
+                persona.ShowDialog();
+                if (persona.Success)
+                    RefrescarLista();
+            }
+            else
+                MessageBox.Show("Selecciona un solo paciente");
+
+        }
     }
 }

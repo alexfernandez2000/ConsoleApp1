@@ -27,7 +27,11 @@ namespace HospitalGrafico
         }
         private void btnCrear_Click(object sender, System.EventArgs e)
         {
-            _hospital.AddPersona<Medico>(new Medico());
+            Medico medico = new Medico();
+            PersonaForm<Medico> persona = new PersonaForm<Medico>(medico);
+            persona.ShowDialog();
+            if (persona.Success)
+                _hospital.AddPersona<Medico>(medico);
             RefrescarLista();
         }
 
@@ -53,10 +57,18 @@ namespace HospitalGrafico
             CitaForm citaForm = new CitaForm(medico);
             citaForm.Show();
         }
-
-        private void btnGenerico_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-           new PersonaForm<Medico>(_hospital.GetPersonas<Medico>()).Show();
+            if (dgvMedicos.SelectedRows.Count != 0)
+            {
+                Medico medicoEditar = dgvMedicos.SelectedRows[0].DataBoundItem as Medico;
+                PersonaForm<Medico> persona = new PersonaForm<Medico>(medicoEditar);
+                persona.ShowDialog();
+                if (persona.Success)
+                    RefrescarLista();
+            }
+            else
+                MessageBox.Show("Selecciona un solo medico");
         }
     }
 }
