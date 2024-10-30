@@ -17,6 +17,7 @@ namespace HospitalModel
         public Paciente(Medico medico):base()
         {
             Medico = medico;
+            medico.ListaPacientes.Add(this);
             HistorialCitas = new List<Cita>();
             ListaCitas = new List<Cita>();
         }

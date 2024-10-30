@@ -33,7 +33,7 @@
             this.dgvPaciente = new System.Windows.Forms.DataGridView();
             this.butListar = new System.Windows.Forms.Button();
             this.btnCitas = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxMedico = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).BeginInit();
             this.SuspendLayout();
@@ -88,13 +88,13 @@
             this.btnCitas.UseVisualStyleBackColor = true;
             this.btnCitas.Click += new System.EventHandler(this.btnCitas_Click);
             // 
-            // comboBox1
+            // cbxMedico
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(438, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 20;
+            this.cbxMedico.FormattingEnabled = true;
+            this.cbxMedico.Location = new System.Drawing.Point(438, 79);
+            this.cbxMedico.Name = "cbxMedico";
+            this.cbxMedico.Size = new System.Drawing.Size(121, 24);
+            this.cbxMedico.TabIndex = 20;
             // 
             // label1
             // 
@@ -111,7 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxMedico);
             this.Controls.Add(this.btnCitas);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCrear);
@@ -132,7 +132,7 @@
         private System.Windows.Forms.DataGridView dgvPaciente;
         private System.Windows.Forms.Button butListar;
         private System.Windows.Forms.Button btnCitas;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxMedico;
         private System.Windows.Forms.Label label1;
     }
 }

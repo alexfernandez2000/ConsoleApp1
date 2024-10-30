@@ -15,6 +15,7 @@ namespace HospitalGrafico
         {
             _hospital = hospital;
             InitializeComponent();
+            RefrescarLista();
         }
         private void butListar_Click(object sender, System.EventArgs e)
         {

@@ -21,8 +21,13 @@ namespace HospitalGrafico
         {
             _hospital = hospital;
             InitializeComponent();
+            InicializarComboBox();
+            RefrescarLista();
         }
-
+        private void InicializarComboBox()
+        {
+            cbxMedico.DataSource=_hospital.GetPersonas<Medico>().Select(x=>x.Name).ToList();
+        }
         private void butListar_Click(object sender, System.EventArgs e)
         {
             RefrescarLista();
@@ -33,8 +38,15 @@ namespace HospitalGrafico
         }
         private void btnCrear_Click(object sender, System.EventArgs e)
         {
-            _hospital.AddPersona<Paciente>(new Paciente());
-            RefrescarLista();
+            string medicoSeleccionado= (string)cbxMedico.SelectedItem;
+            if (cbxMedico.SelectedItem!=null)
+            {
+                Medico medico = _hospital.GetPersona<Medico>(medicoSeleccionado);
+                _hospital.AddPersona<Paciente>(new Paciente(medico));
+                RefrescarLista();
+                return;
+            }
+            MessageBox.Show("Selecciona un medico");
         }
 
         private void btnEliminar_Click(object sender, System.EventArgs e)

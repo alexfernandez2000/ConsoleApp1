@@ -21,6 +21,7 @@ namespace HospitalGrafico.Forms
             _medico = medico;
             InitializeComponent();
             CargarComboBox();
+            RefrescarLista();
         }
         public CitaForm(Paciente paciente)
         {
@@ -36,13 +37,14 @@ namespace HospitalGrafico.Forms
             {
                 cbxPacientes.Hide();
                 btnCrear.Hide();
+                btnEliminar.Hide();
                 lblPacientes.Hide();
                 lblFechaCita.Hide();
                 dtpFechaCita.Hide();
                 dgvCita.ReadOnly = true;
             }
             else
-                cbxPacientes.DataSource = _medico.ListaPacientes.Select(x => x.Name);
+                cbxPacientes.DataSource = _medico.ListaPacientes.Select(x => x.Name).ToList();
         }
 
         private void butListar_Click(object sender, System.EventArgs e)
