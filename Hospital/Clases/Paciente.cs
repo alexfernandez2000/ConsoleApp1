@@ -2,12 +2,14 @@
 using HospitalModel.Clases;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace HospitalModel
 {
     public class Paciente:Persona
     {
+        [Browsable(false)]
         public Medico Medico { get; set; }
         public List<Cita>ListaCitas { get; set; }
         public List<Cita> HistorialCitas { get; set; }

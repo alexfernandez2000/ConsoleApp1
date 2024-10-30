@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using HospitalGrafico.Forms;
 using HospitalModel;
 using HospitalModel.Clases;
 
@@ -24,7 +26,7 @@ namespace HospitalGrafico
         }
         private void btnCrear_Click(object sender, System.EventArgs e)
         {
-            _hospital.AddMedico();
+            _hospital.AddPersona<Medico>(new Medico());
             RefrescarLista();
         }
 
@@ -33,10 +35,22 @@ namespace HospitalGrafico
             foreach (DataGridViewRow row in dgvMedicos.SelectedRows)
             {
                 Medico medicoEliminar = row.DataBoundItem as Medico;
-
-                _hospital.EliminarMedico(medicoEliminar);
-                RefrescarLista();
+                _hospital.EliminarPersona<Medico>(medicoEliminar);
             }
+            RefrescarLista();
+
+        }
+
+        private void btnCitas_Click(object sender, EventArgs e)
+        {
+            if (dgvMedicos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un medico");
+                return;
+            }
+            Medico medico = dgvMedicos.SelectedRows[0].DataBoundItem as Medico;
+            CitaForm citaForm = new CitaForm(medico);
+            citaForm.Show();
         }
     }
 }

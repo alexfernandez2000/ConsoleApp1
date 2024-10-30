@@ -52,6 +52,12 @@
     <Compile Include="Forms\AdministrativoForm.Designer.cs">
       <DependentUpon>AdministrativoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CitaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CitaForm.Designer.cs">
+      <DependentUpon>CitaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HospitalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,11 +78,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AdministrativoForm.resx">
+      <DependentUpon>AdministrativoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CitaForm.resx">
+      <DependentUpon>CitaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HospitalForm.resx">
       <DependentUpon>HospitalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MedicoForm.resx">
       <DependentUpon>MedicoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PacienteForm.resx">
+      <DependentUpon>PacienteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

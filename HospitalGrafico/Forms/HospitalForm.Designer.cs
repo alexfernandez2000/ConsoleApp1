@@ -30,8 +30,8 @@
         {
             this.btnCitas = new System.Windows.Forms.Button();
             this.btnMedicos = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAdministrativo = new System.Windows.Forms.Button();
+            this.btnPaciente = new System.Windows.Forms.Button();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.panForm = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -45,6 +45,7 @@
             this.btnCitas.TabIndex = 0;
             this.btnCitas.Text = "Citas";
             this.btnCitas.UseVisualStyleBackColor = true;
+            this.btnCitas.Click += new System.EventHandler(this.btnCitas_Click);
             // 
             // btnMedicos
             // 
@@ -56,23 +57,25 @@
             this.btnMedicos.UseVisualStyleBackColor = true;
             this.btnMedicos.Click += new System.EventHandler(this.btnMedicos_Click);
             // 
-            // button2
+            // btnAdministrativo
             // 
-            this.button2.Location = new System.Drawing.Point(277, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 59);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Administrativo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAdministrativo.Location = new System.Drawing.Point(277, 12);
+            this.btnAdministrativo.Name = "btnAdministrativo";
+            this.btnAdministrativo.Size = new System.Drawing.Size(109, 59);
+            this.btnAdministrativo.TabIndex = 2;
+            this.btnAdministrativo.Text = "Administrativo";
+            this.btnAdministrativo.UseVisualStyleBackColor = true;
+            this.btnAdministrativo.Click += new System.EventHandler(this.btnAdministrativo_Click);
             // 
-            // button3
+            // btnPaciente
             // 
-            this.button3.Location = new System.Drawing.Point(392, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 59);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Paciente";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPaciente.Location = new System.Drawing.Point(392, 12);
+            this.btnPaciente.Name = "btnPaciente";
+            this.btnPaciente.Size = new System.Drawing.Size(109, 59);
+            this.btnPaciente.TabIndex = 3;
+            this.btnPaciente.Text = "Paciente";
+            this.btnPaciente.UseVisualStyleBackColor = true;
+            this.btnPaciente.Click += new System.EventHandler(this.btnPaciente_Click);
             // 
             // fileSystemWatcher1
             // 
@@ -92,8 +95,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panForm);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPaciente);
+            this.Controls.Add(this.btnAdministrativo);
             this.Controls.Add(this.btnMedicos);
             this.Controls.Add(this.btnCitas);
             this.Name = "HospitalForm";
@@ -107,8 +110,8 @@
 
         private System.Windows.Forms.Button btnCitas;
         private System.Windows.Forms.Button btnMedicos;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdministrativo;
+        private System.Windows.Forms.Button btnPaciente;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Panel panForm;
     }

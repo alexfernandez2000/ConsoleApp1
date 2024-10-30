@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace HospitalModel.Clases
 
         public void ModficarCita(DateTime? nuevaFecha=null,bool? asistencia=null,string tratamiento=null,string diagnostico=null)
         {
-            Fecha = nuevaFecha??Fecha;
+            Fecha = nuevaFecha ?? Fecha;
             Asistencia = asistencia ?? Asistencia;
             Tratamiento = tratamiento ?? Tratamiento;
             Diagnostico = diagnostico ?? Diagnostico;

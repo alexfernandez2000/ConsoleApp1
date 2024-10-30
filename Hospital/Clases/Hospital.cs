@@ -22,27 +22,14 @@ namespace HospitalModel.Clases
             var test= _personas.OfType<T>().ToList();
             return test;
         }
+        public void AddPersona<T>(T persona)where T : Persona
+        {
+            _personas.Add(persona);
+        }
+        public void EliminarPersona<T>(T persona) where T : Persona
+        {
+            _personas.Remove(persona);
+        }
         //Add a lisa y eliminar por persona en generico.
-        #region Medico
-        public void AddMedico()
-        {
-            _personas.Add(new Medico());
-        }
-        public void EliminarMedico(Medico medico)
-        {
-            _personas.Remove(medico);
-        }
-        #endregion
-        #region Administrativo
-        public void AddAdministrativo(Administrativo administrativo)
-        {
-            _personas.Add(administrativo);
-        }
-        public void EliminarAdministrativo(Administrativo administrativo)
-        {
-            _personas.Remove(administrativo);
-        }
-
-        #endregion
     }
 }
