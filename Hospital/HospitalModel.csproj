@@ -79,6 +79,7 @@
     <Compile Include="Clases\Medico.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\Persona.cs" />
+    <Compile Include="Clases\Atributos\PersonaAtributos.cs" />
     <Compile Include="Clases\Personal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -37,7 +37,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(322, 79);
+            this.btnEliminar.Location = new System.Drawing.Point(199, 82);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 11;
@@ -47,7 +47,7 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(241, 79);
+            this.btnCrear.Location = new System.Drawing.Point(118, 82);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCrear.TabIndex = 10;
@@ -67,7 +67,7 @@
             // 
             // butListar
             // 
-            this.butListar.Location = new System.Drawing.Point(160, 79);
+            this.butListar.Location = new System.Drawing.Point(37, 82);
             this.butListar.Name = "butListar";
             this.butListar.Size = new System.Drawing.Size(75, 23);
             this.butListar.TabIndex = 8;

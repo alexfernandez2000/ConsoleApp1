@@ -63,7 +63,10 @@ public class PersonaForm<T> : Form where T : Persona, new()
     {
         foreach (var property in typeof(T).GetProperties())
         {
-            if (typeof(System.Collections.IEnumerable).IsAssignableFrom(property.PropertyType) && property.PropertyType != typeof(string))
+            PersonaAtributos atributosClase = (PersonaAtributos)property.GetCustomAttribute(typeof(PersonaAtributos), false);
+            bool showValue= atributosClase != null ? atributosClase.ShowForm : true;
+
+            if ((typeof(System.Collections.IEnumerable).IsAssignableFrom(property.PropertyType) && property.PropertyType != typeof(string)) || !showValue)
             {
                 continue;
             }

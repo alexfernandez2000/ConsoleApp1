@@ -62,6 +62,7 @@ namespace HospitalGrafico.Forms
                 {
                     Paciente paciente = _medico.ListaPacientes.Where(x=> x.Name == cbxPacientes.Text).First();
                     new Cita(_medico, paciente, DateTime.Now, false);
+                    RefrescarLista();
                 }
                 else
                 {

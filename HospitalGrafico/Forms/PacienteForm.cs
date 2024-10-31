@@ -42,8 +42,14 @@ namespace HospitalGrafico
             if (cbxMedico.SelectedItem!=null)
             {
                 Medico medico = _hospital.GetPersona<Medico>(medicoSeleccionado);
-                _hospital.AddPersona<Paciente>(new Paciente(medico));
-                RefrescarLista();
+                Paciente paciente= new Paciente(medico);
+                PersonaForm<Paciente> personaForm = new PersonaForm<Paciente>(paciente);
+                personaForm.ShowDialog();
+                if (personaForm.Success)
+                {
+                    _hospital.AddPersona(paciente);
+                    RefrescarLista();
+                }
                 return;
             }
             MessageBox.Show("Selecciona un medico");
