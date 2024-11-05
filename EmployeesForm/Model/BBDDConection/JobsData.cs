@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -20,8 +21,18 @@ namespace EmployeesForm.Model
             {
                 Conexion();
                 string sql = $@"INSERT INTO jobs(job_title,min_salary,max_salary)
-                VALUES ('{job.job_title}',{NullToDBNull(job.min_salary)},{NullToDBNull(job.max_salary)})";
+                VALUES (@jobTitle,@minSalary,@maxSalary)";
                 SqlCommand sqlCommand = new SqlCommand(sql, Connection);
+                SqlParameter jobTitle = new SqlParameter("@jobTitle", SqlDbType.VarChar, 35);
+                jobTitle.Value = job.job_title;
+                SqlParameter minSalary = new SqlParameter("@minSalary", SqlDbType.Decimal);
+                minSalary.Value = NullToDBNull(job.min_salary);
+                SqlParameter maxSalary = new SqlParameter("@maxSalary", SqlDbType.Decimal);
+                maxSalary.Value = NullToDBNull(job.max_salary);
+
+                sqlCommand.Parameters.Add(jobTitle);
+                sqlCommand.Parameters.Add(minSalary);
+                sqlCommand.Parameters.Add(maxSalary);
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception)
@@ -74,10 +85,14 @@ min_salary = @minSalary,
 max_salary = @maxSalary
 where job_id = @jobId";
                 SqlCommand cmd = new SqlCommand(sql, Connection);
-                SqlParameter jobTitle = new SqlParameter("@jobTitle", job.job_title);
-                SqlParameter minSalary = new SqlParameter("@minSalary", job.min_salary);
-                SqlParameter maxSalary = new SqlParameter("@maxSalary", job.max_salary);
-                SqlParameter jobId = new SqlParameter("@jobId", job.job_id);
+                SqlParameter jobTitle = new SqlParameter("@jobTitle",SqlDbType.VarChar,35);
+                jobTitle.Value = job.job_title;
+                SqlParameter minSalary = new SqlParameter("@minSalary", SqlDbType.Decimal);
+                minSalary.Value = NullToDBNull(job.min_salary);
+                SqlParameter maxSalary = new SqlParameter("@maxSalary", SqlDbType.Decimal);
+                maxSalary.Value = NullToDBNull(job.max_salary);
+                SqlParameter jobId = new SqlParameter("@jobId", SqlDbType.Int);
+                jobId.Value = job.job_id;
 
                 cmd.Parameters.Add(jobTitle);
                 cmd.Parameters.Add(minSalary);

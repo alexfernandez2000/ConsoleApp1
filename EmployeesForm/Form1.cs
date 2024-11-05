@@ -40,10 +40,6 @@ namespace EmployeesForm
             {
                 Job jobSeleccionado = dgvJob.SelectedRows[0].DataBoundItem as Job;
                 Job jobForm = GetJobData();
-                if (jobForm.job_title.Length==0)
-                {
-                    return;
-                }
                 jobSeleccionado.job_title= jobForm.job_title;
                 jobSeleccionado.min_salary= jobForm.min_salary;
                 jobSeleccionado.max_salary= jobForm.max_salary;

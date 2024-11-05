@@ -40,7 +40,7 @@ namespace EmployeesForm.Model
         }
         public object NullToDBNull(object value)
         {
-            return value ?? "NULL";
+            return value ?? DBNull.Value;
         }
 
     }
