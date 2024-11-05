@@ -1,11 +1,11 @@
 ﻿using System;
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class PersonaAtributos : Attribute
+    public class FormAtributes : Attribute
     {
         public bool ShowForm { get; }
 
-        public PersonaAtributos(bool isShowable)
+        public FormAtributes(bool isShowable)
         {
             ShowForm = isShowable;
         }

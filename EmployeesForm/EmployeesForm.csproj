@@ -46,12 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditJob.Designer.cs">
+      <DependentUpon>EditJob.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Atributos\FormAtributes.cs" />
     <Compile Include="Model\BBDDConection\BBDDConnection.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\BBDDConection\JobsData.cs" />
@@ -69,6 +76,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\EmployeesForm.Model.Job.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

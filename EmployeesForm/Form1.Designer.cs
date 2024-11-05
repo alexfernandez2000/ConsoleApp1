@@ -35,12 +35,16 @@
             this.btAdd = new System.Windows.Forms.Button();
             this.tbMaxSalary = new System.Windows.Forms.TextBox();
             this.tbMinSalary = new System.Windows.Forms.TextBox();
+            this.btGetAll = new System.Windows.Forms.Button();
+            this.dgvJob = new System.Windows.Forms.DataGridView();
+            this.btnEdit = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJob)).BeginInit();
             this.SuspendLayout();
             // 
             // lbConnection
             // 
             this.lbConnection.AutoSize = true;
-            this.lbConnection.Location = new System.Drawing.Point(158, 154);
+            this.lbConnection.Location = new System.Drawing.Point(15, 80);
             this.lbConnection.Name = "lbConnection";
             this.lbConnection.Size = new System.Drawing.Size(56, 13);
             this.lbConnection.TabIndex = 2;
@@ -49,7 +53,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(158, 128);
+            this.label1.Location = new System.Drawing.Point(15, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
@@ -58,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(158, 95);
+            this.label2.Location = new System.Drawing.Point(15, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 4;
@@ -66,14 +70,14 @@
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(255, 95);
+            this.tbTitle.Location = new System.Drawing.Point(112, 21);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(100, 20);
             this.tbTitle.TabIndex = 5;
             // 
             // btAdd
             // 
-            this.btAdd.Location = new System.Drawing.Point(324, 224);
+            this.btAdd.Location = new System.Drawing.Point(112, 124);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(75, 23);
             this.btAdd.TabIndex = 1;
@@ -83,23 +87,58 @@
             // 
             // tbMaxSalary
             // 
-            this.tbMaxSalary.Location = new System.Drawing.Point(255, 151);
+            this.tbMaxSalary.Location = new System.Drawing.Point(112, 77);
             this.tbMaxSalary.Name = "tbMaxSalary";
             this.tbMaxSalary.Size = new System.Drawing.Size(100, 20);
             this.tbMaxSalary.TabIndex = 6;
             // 
             // tbMinSalary
             // 
-            this.tbMinSalary.Location = new System.Drawing.Point(255, 125);
+            this.tbMinSalary.Location = new System.Drawing.Point(112, 51);
             this.tbMinSalary.Name = "tbMinSalary";
             this.tbMinSalary.Size = new System.Drawing.Size(100, 20);
             this.tbMinSalary.TabIndex = 7;
+            // 
+            // btGetAll
+            // 
+            this.btGetAll.Location = new System.Drawing.Point(455, 284);
+            this.btGetAll.Name = "btGetAll";
+            this.btGetAll.Size = new System.Drawing.Size(75, 23);
+            this.btGetAll.TabIndex = 8;
+            this.btGetAll.Text = "GetAll";
+            this.btGetAll.UseVisualStyleBackColor = true;
+            this.btGetAll.Click += new System.EventHandler(this.btGetAll_Click);
+            // 
+            // dgvJob
+            // 
+            this.dgvJob.AllowUserToAddRows = false;
+            this.dgvJob.AllowUserToDeleteRows = false;
+            this.dgvJob.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJob.Location = new System.Drawing.Point(260, 21);
+            this.dgvJob.Name = "dgvJob";
+            this.dgvJob.ReadOnly = true;
+            this.dgvJob.Size = new System.Drawing.Size(511, 240);
+            this.dgvJob.TabIndex = 9;
+            this.dgvJob.SelectionChanged += new System.EventHandler(this.dgvJob_SelectionChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(361, 284);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 10;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.dgvJob);
+            this.Controls.Add(this.btGetAll);
             this.Controls.Add(this.tbMinSalary);
             this.Controls.Add(this.tbMaxSalary);
             this.Controls.Add(this.tbTitle);
@@ -109,6 +148,7 @@
             this.Controls.Add(this.btAdd);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJob)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +162,9 @@
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.TextBox tbMaxSalary;
         private System.Windows.Forms.TextBox tbMinSalary;
+        private System.Windows.Forms.Button btGetAll;
+        private System.Windows.Forms.DataGridView dgvJob;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

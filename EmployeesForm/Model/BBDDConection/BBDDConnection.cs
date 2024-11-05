@@ -38,6 +38,10 @@ namespace EmployeesForm.Model
                 Console.WriteLine($"Error al conectar: {ex.Message}");
             }
         }
+        public object NullToDBNull(object value)
+        {
+            return value ?? "NULL";
+        }
 
     }
 }

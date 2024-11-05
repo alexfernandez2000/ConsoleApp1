@@ -2,10 +2,11 @@
 {
     public class Job
     {
-        public int job_id;
-        public string job_title;
-        public decimal? min_salary;
-        public decimal? max_salary;
+        [FormAtributes(false)]
+        public int job_id { get; set;}
+        public string job_title { get; set; }
+        public decimal? min_salary { get; set; }
+        public decimal? max_salary { get; set; }
         public Job()
         {
             
