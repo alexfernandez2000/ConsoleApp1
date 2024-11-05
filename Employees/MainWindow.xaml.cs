@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Employees.Model;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,11 +17,12 @@ namespace Employees
     /// </summary>
     public partial class MainWindow : Window
     {
+        Countries countries;
         public MainWindow()
         {
             InitializeComponent();
-            string connectionString = "Server=85.208.21.117,54321;Database=AlexFerEmployees;User Id=as;Password=Sql#123456789;";
-
+            countries = new Countries();
         }
+
     }
 }

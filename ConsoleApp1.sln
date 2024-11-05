@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalGrafico", "Hospital
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "Employees\Employees.csproj", "{F6384BBD-BF69-4E5E-8C68-254DF40B344F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesForm", "EmployeesForm\EmployeesForm.csproj", "{8D38384E-09D8-43BE-B12F-AF2745FF9B68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F6384BBD-BF69-4E5E-8C68-254DF40B344F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6384BBD-BF69-4E5E-8C68-254DF40B344F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6384BBD-BF69-4E5E-8C68-254DF40B344F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D38384E-09D8-43BE-B12F-AF2745FF9B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D38384E-09D8-43BE-B12F-AF2745FF9B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D38384E-09D8-43BE-B12F-AF2745FF9B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D38384E-09D8-43BE-B12F-AF2745FF9B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
