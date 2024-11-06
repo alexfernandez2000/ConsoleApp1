@@ -46,26 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditJob.cs">
+    <Compile Include="Model\BBDDConection\DalDepartment.cs" />
+    <Compile Include="Model\BBDDConection\DalEmploye.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Employe.cs" />
+    <Compile Include="View\EmployeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditJob.Designer.cs">
-      <DependentUpon>EditJob.cs</DependentUpon>
+    <Compile Include="View\EmployeForm.Designer.cs">
+      <DependentUpon>EmployeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="View\StarterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\StarterForm.Designer.cs">
+      <DependentUpon>StarterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\JobForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\JobForm.Designer.cs">
+      <DependentUpon>JobForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Atributos\FormAtributes.cs" />
     <Compile Include="Model\BBDDConection\BBDDConnection.cs" />
     <Compile Include="Model\Job.cs" />
-    <Compile Include="Model\BBDDConection\JobsData.cs" />
+    <Compile Include="Model\BBDDConection\DalJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\EmployeForm.resx">
+      <DependentUpon>EmployeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StarterForm.resx">
+      <DependentUpon>StarterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\JobForm.resx">
+      <DependentUpon>JobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,5 +106,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

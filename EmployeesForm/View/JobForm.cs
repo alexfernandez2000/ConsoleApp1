@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace EmployeesForm
 {
-    public partial class Form1 : Form
+    public partial class JobForm : Form
     {
-        JobsData jobsData = new JobsData();
-        public Form1()
+        DalJob jobsData = new DalJob();
+        public JobForm()
         {
             InitializeComponent();
         }

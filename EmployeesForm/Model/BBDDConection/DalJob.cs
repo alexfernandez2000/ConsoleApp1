@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace EmployeesForm.Model
 {
-    public class JobsData : BBDDConnection
+    public class DalJob : BBDDConnection
     {
-        public JobsData()
+        public DalJob()
         {
 
         }
@@ -50,7 +50,7 @@ namespace EmployeesForm.Model
             try
             {
                 Conexion();
-                string sql = @"Select * from jobs";
+                string sql = @"SELECT * FROM jobs";
                 SqlCommand command = new SqlCommand(sql, Connection);
                 SqlDataReader records = command.ExecuteReader();
                 while (records.Read())
@@ -79,11 +79,11 @@ namespace EmployeesForm.Model
             try
             {
                 Conexion();
-                string sql = @"update jobs
-set job_title =  @jobTitle,
+                string sql = @"UPDATE jobs
+SET job_title =  @jobTitle,
 min_salary = @minSalary,
 max_salary = @maxSalary
-where job_id = @jobId";
+WHERE job_id = @jobId";
                 SqlCommand cmd = new SqlCommand(sql, Connection);
                 SqlParameter jobTitle = new SqlParameter("@jobTitle",SqlDbType.VarChar,35);
                 jobTitle.Value = job.job_title;

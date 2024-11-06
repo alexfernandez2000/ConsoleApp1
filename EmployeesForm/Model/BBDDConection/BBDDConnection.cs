@@ -10,7 +10,6 @@ namespace EmployeesForm.Model
         public BBDDConnection()
         {
             string connectionString = "Server=85.208.21.117,54321;Database=AlexFerEmployees;User Id=sa;Password=Sql#123456789;";
-            //TrustServerCertificate=True;
             Connection = new SqlConnection(connectionString);
         }
         public void Conexion()
