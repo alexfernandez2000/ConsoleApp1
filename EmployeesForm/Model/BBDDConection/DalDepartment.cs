@@ -26,7 +26,7 @@ namespace EmployeesForm.Model.BBDDConection
                 {
                     int departmentId = records.GetInt32(0);
                     string departmentName = records.GetString(1);
-                    int locationId = records.GetInt32(2);
+                    int? locationId = records.IsDBNull(2) ? (int?)null : records.GetInt32(2);
                     Department department = new Department(departmentId,departmentName,locationId);
                     departments.Add(department);
                 }

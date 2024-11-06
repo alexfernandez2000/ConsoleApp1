@@ -24,7 +24,7 @@ namespace EmployeesForm
         }
         private void RefrescarLista()
         {
-            dgvJob.DataSource = jobsData.GetAll(); ;
+            dgvJob.DataSource = jobsData.GetAll();
         }
         private Job GetJobData()
         {

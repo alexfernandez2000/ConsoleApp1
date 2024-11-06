@@ -11,13 +11,6 @@
         {
             
         }
-        public Job(string jobTitle, decimal? minSalary, decimal? maxSalary)
-        {
-            job_title = jobTitle;
-            min_salary = minSalary;
-            max_salary = maxSalary;
-        }
-
         public Job(int jobid,string jobTitle,decimal? minSalary,decimal? maxSalary)
         {
             job_id = jobid;
