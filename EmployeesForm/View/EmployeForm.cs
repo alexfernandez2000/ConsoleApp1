@@ -1,4 +1,5 @@
-﻿using EmployeesForm.Model;
+﻿using EmployeesForm.BBDDConection;
+using EmployeesForm.Model;
 using EmployeesForm.Model.BBDDConection;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace EmployeesForm
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            
             if (dgvEmployees.SelectedRows.Count != 0)
             {
                 Employe selectedEmploye = dgvEmployees.SelectedRows[0].DataBoundItem as Employe;
@@ -66,7 +68,7 @@ namespace EmployeesForm
                 employe.email = tbEmail.Text;
                 employe.phone_number = tbPhoneNumber.Text;
                 employe.hire_date = dtHireDate.Value;
-                employe.job_id = ((Job)cbJob.SelectedItem).job_id;
+                employe.job_id = ((job)cbJob.SelectedItem).job_id;
                 employe.salary = numSalary.Value;
                 employe.manager_id = ((Employe)cbManager.SelectedItem) == null ? null : (int?)((Employe)cbManager.SelectedItem).employee_id;
                 employe.department_id = ((Department)cbDepartment.SelectedItem) == null ? null : (int?)((Department)cbDepartment.SelectedItem).department_id;
@@ -82,7 +84,7 @@ namespace EmployeesForm
             tbEmail.Text = employe.email;
             tbPhoneNumber.Text = employe.phone_number;
             dtHireDate.Value = employe.hire_date;
-            cbJob.SelectedItem = cbJob.Items.OfType<Job>().Where(x=>x.job_id==employe.job_id).FirstOrDefault();
+            cbJob.SelectedItem = cbJob.Items.OfType<job>().Where(x=>x.job_id==employe.job_id).FirstOrDefault();
             numSalary.Value = employe.salary;
             if (employe.manager_id != null)
                 cbManager.SelectedItem = cbManager.Items.OfType<Employe>().Where(x => x.employee_id == employe.manager_id).FirstOrDefault();

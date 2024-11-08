@@ -1,10 +1,11 @@
-﻿using System;
+﻿using EmployeesForm.BBDDConection.Interfaces;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace EmployeesForm.Model
 {
-    public class BBDDConnection
+    public class BBDDConnection : IBBDDConnection
     {
        public SqlConnection Connection;
         public BBDDConnection()
@@ -41,6 +42,5 @@ namespace EmployeesForm.Model
         {
             return value ?? DBNull.Value;
         }
-
     }
 }

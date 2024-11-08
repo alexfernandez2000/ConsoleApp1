@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeesForm.BBDDConection.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesForm.Model.BBDDConection
 {
-    public class DalDepartment : BBDDConnection
+    public class DalDepartment : BBDDConnection,IDalDepartment
     {
         public DalDepartment()
         {

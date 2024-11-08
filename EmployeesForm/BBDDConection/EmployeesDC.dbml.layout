@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.75, 8.5" name="Pruebas">
+  <DataContextMoniker Name="/PruebasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f00e131f-ddbd-497a-9c98-96818ba28f04" absoluteBounds="3.5, 1.625, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/PruebasDataContext/country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6304b08-0c96-414a-ac96-a61e4a398201" absoluteBounds="3.515, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="11bbaf11-a0e7-44a7-b76a-358624e8f59f" absoluteBounds="0.75, 1.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/PruebasDataContext/region" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1945f64c-dd17-4dab-82bb-054e6b494fd7" absoluteBounds="0.765, 2.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf9bacac-5aa7-4b1b-9fc9-5f65d967fcd7" absoluteBounds="9, 1.625, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/PruebasDataContext/department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8e2ee25-837b-43d2-8c62-61afd315e825" absoluteBounds="9.015, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d962158-857c-4aa8-baca-a77bc7235216" absoluteBounds="14.5, 1.5, 2, 1.7708968098958333">
+      <DataClassMoniker Name="/PruebasDataContext/dependent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e55ac95c-258e-41cb-b024-080370e5fcbb" absoluteBounds="14.515, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" absoluteBounds="11.75, 1, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PruebasDataContext/employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="845f175c-51f3-4841-bc5a-baacff6b2da0" absoluteBounds="11.765, 1.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="852fe83b-a7e6-4d97-8211-bcad6f364711" absoluteBounds="9, 5.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PruebasDataContext/job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09825799-bef1-4fb5-836e-bd2427155168" absoluteBounds="9.015, 5.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="80b54931-701a-443a-a656-2e7b334e5021" absoluteBounds="6.25, 1.375, 2, 1.9631982421874998">
+      <DataClassMoniker Name="/PruebasDataContext/location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c041fc3b-5354-452b-b124-fc6c4448c54f" absoluteBounds="6.265, 1.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95d5eb7d-f979-4ea1-ae20-49e494957bd2" absoluteBounds="2.25, 4.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/PruebasDataContext/Loli" />
+      <nestedChildShapes>
+        <elementListCompartment Id="216f7d94-e6b3-4f70-8b49-f1db0df727f6" absoluteBounds="2.265, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.34699625651042); (3.5 : 2.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/region/region_country" />
+      <nodes>
+        <classShapeMoniker Id="11bbaf11-a0e7-44a7-b76a-358624e8f59f" />
+        <classShapeMoniker Id="f00e131f-ddbd-497a-9c98-96818ba28f04" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 2.38544840494792); (14.5 : 2.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/employee/employee_dependent" />
+      <nodes>
+        <classShapeMoniker Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" />
+        <classShapeMoniker Id="7d962158-857c-4aa8-baca-a77bc7235216" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 2.31814697265625); (11.75 : 2.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/department/department_employee" />
+      <nodes>
+        <classShapeMoniker Id="cf9bacac-5aa7-4b1b-9fc9-5f65d967fcd7" />
+        <classShapeMoniker Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.4592307692308 : 3.73240397135417); (12.4592307692308 : 3.98240397135417); (13.0546153846154 : 3.98240397135417); (13.0546153846154 : 3.73240397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PruebasDataContext/employee/employee_employee" />
+      <nodes>
+        <classShapeMoniker Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" />
+        <classShapeMoniker Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 6.28929768880208); (12.0733628846154 : 6.28929768880208); (12.0733628846154 : 3.73240397135417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/job/job_employee" />
+      <nodes>
+        <classShapeMoniker Id="852fe83b-a7e6-4d97-8211-bcad6f364711" />
+        <classShapeMoniker Id="369b32c0-8e45-4c46-9944-66c184a8c7eb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.31814697265625); (9 : 2.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/location/location_department" />
+      <nodes>
+        <classShapeMoniker Id="80b54931-701a-443a-a656-2e7b334e5021" />
+        <classShapeMoniker Id="cf9bacac-5aa7-4b1b-9fc9-5f65d967fcd7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.31814697265625); (6.25 : 2.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PruebasDataContext/country/country_location" />
+      <nodes>
+        <classShapeMoniker Id="f00e131f-ddbd-497a-9c98-96818ba28f04" />
+        <classShapeMoniker Id="80b54931-701a-443a-a656-2e7b334e5021" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

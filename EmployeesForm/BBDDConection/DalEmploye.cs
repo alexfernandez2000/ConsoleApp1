@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeesForm.BBDDConection.Interfaces;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesForm.Model.BBDDConection
 {
-    public class DalEmploye : BBDDConnection
+    public class DalEmploye : BBDDConnection,IDalEmploye
     {
         public DalEmploye()
         {
@@ -33,23 +34,23 @@ namespace EmployeesForm.Model.BBDDConection
 ";
                 SqlCommand cmd = new SqlCommand(sql, Connection);
                 SqlParameter firstName = new SqlParameter("@FirstName", SqlDbType.VarChar, 20);
-                firstName.Value = employe.first_name;
+                firstName.Value = NullToDBNull(employe.first_name);
                 SqlParameter lastName = new SqlParameter("@LastName", SqlDbType.VarChar, 25);
                 lastName.Value = employe.last_name;
                 SqlParameter email = new SqlParameter("@Email", SqlDbType.VarChar, 100);
                 email.Value = employe.email;
                 SqlParameter phoneNumber = new SqlParameter("@PhoneNumber", SqlDbType.VarChar, 20);
-                phoneNumber.Value = employe.phone_number;
+                phoneNumber.Value = NullToDBNull(employe.phone_number);
                 SqlParameter hireDate = new SqlParameter("@HireDate", SqlDbType.Date, 20);
                 hireDate.Value = employe.hire_date;
                 SqlParameter jobId = new SqlParameter("@JobId", SqlDbType.Int);
                 jobId.Value = employe.job_id;
                 SqlParameter salary = new SqlParameter("@Salary", SqlDbType.Decimal);
                 salary.Value = employe.salary;
-                SqlParameter managerId = new SqlParameter("@ManagerId", SqlDbType.Int);
-                managerId.Value = employe.manager_id;
+                SqlParameter managerId = new SqlParameter("@ManagerId",  SqlDbType.Int);
+                managerId.Value = NullToDBNull(employe.manager_id);
                 SqlParameter departmentId = new SqlParameter("@DepartmentId", SqlDbType.Int);
-                departmentId.Value = employe.department_id;
+                departmentId.Value = NullToDBNull(employe.department_id);
 
                 cmd.Parameters.Add(firstName);
                 cmd.Parameters.Add(lastName);

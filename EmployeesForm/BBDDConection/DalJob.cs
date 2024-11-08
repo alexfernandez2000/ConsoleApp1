@@ -1,6 +1,9 @@
-﻿using System;
+﻿using EmployeesForm.BBDDConection;
+using EmployeesForm.BBDDConection.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -9,31 +12,26 @@ using System.Threading.Tasks;
 
 namespace EmployeesForm.Model
 {
-    public class DalJob : BBDDConnection
+    public class DalJob : BBDDConnection,IDalJob
     {
+        EmployeesDC _dc;
         public DalJob()
         {
-
+            _dc = new EmployeesDC();
         }
-        public void Insert(Job job)
+        public void GetByIdDBContext(int id)
+        {
+            var jobs = _dc.jobs.Where(x => x.job_id == id).ToList();
+            _dc.jobs.InsertOnSubmit(jobs.FirstOrDefault());
+            //_pruebasDataContext.SubmitChanges();
+        }
+        public void Insert(job job)
         {
             try
             {
-                Conexion();
-                string sql = $@"INSERT INTO jobs(job_title,min_salary,max_salary)
-                VALUES (@jobTitle,@minSalary,@maxSalary)";
-                SqlCommand sqlCommand = new SqlCommand(sql, Connection);
-                SqlParameter jobTitle = new SqlParameter("@jobTitle", SqlDbType.VarChar, 35);
-                jobTitle.Value = job.job_title;
-                SqlParameter minSalary = new SqlParameter("@minSalary", SqlDbType.Decimal);
-                minSalary.Value = NullToDBNull(job.min_salary);
-                SqlParameter maxSalary = new SqlParameter("@maxSalary", SqlDbType.Decimal);
-                maxSalary.Value = NullToDBNull(job.max_salary);
-
-                sqlCommand.Parameters.Add(jobTitle);
-                sqlCommand.Parameters.Add(minSalary);
-                sqlCommand.Parameters.Add(maxSalary);
-                sqlCommand.ExecuteNonQuery();
+                _dc.Connection.Open();
+                _dc.jobs.InsertOnSubmit(job);
+                _dc.SubmitChanges();
             }
             catch (Exception)
             {
@@ -41,28 +39,16 @@ namespace EmployeesForm.Model
             }
             finally
             {
-                Desconexion();
+                _dc.Connection.Close();
             }
         }
-        public List<Job> GetAll()
+        public List<job> GetAll()
         {
-            List<Job> jobs = new List<Job>();
+            List<job> jobs = new List<job>();
             try
             {
-                Conexion();
-                string sql = @"SELECT * FROM jobs";
-                SqlCommand command = new SqlCommand(sql, Connection);
-                SqlDataReader records = command.ExecuteReader();
-                while (records.Read())
-                {
-                    int jobid = records.GetInt32(0);
-                    string jobName = records.GetString(1);
-                    decimal? minSalary = records.IsDBNull(2) ? (decimal?)null : records.GetDecimal(2);
-                    decimal? maxSalary = records.IsDBNull(3) ? (decimal?)null : records.GetDecimal(3);
-                    Job job = new Job(jobid, jobName, minSalary, maxSalary);
-                    jobs.Add(job);
-                }
-
+                _dc.Connection.Open();
+                jobs=_dc.jobs.ToList();
             }
             catch (Exception)
             {
@@ -70,45 +56,29 @@ namespace EmployeesForm.Model
             }
             finally
             {
-                Desconexion();
+                _dc.Connection.Close();
             }
+
             return jobs;
         }
-        public void Update(Job job)
+        public void Update(job UpdateJob)
         {
+            List<job> jobs = new List<job>();
             try
             {
-                Conexion();
-                string sql = @"UPDATE jobs
-SET job_title =  @jobTitle,
-min_salary = @minSalary,
-max_salary = @maxSalary
-WHERE job_id = @jobId";
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                SqlParameter jobTitle = new SqlParameter("@jobTitle",SqlDbType.VarChar,35);
-                jobTitle.Value = job.job_title;
-                SqlParameter minSalary = new SqlParameter("@minSalary", SqlDbType.Decimal);
-                minSalary.Value = NullToDBNull(job.min_salary);
-                SqlParameter maxSalary = new SqlParameter("@maxSalary", SqlDbType.Decimal);
-                maxSalary.Value = NullToDBNull(job.max_salary);
-                SqlParameter jobId = new SqlParameter("@jobId", SqlDbType.Int);
-                jobId.Value = job.job_id;
-
-                cmd.Parameters.Add(jobTitle);
-                cmd.Parameters.Add(minSalary);
-                cmd.Parameters.Add(maxSalary);
-                cmd.Parameters.Add(jobId);
-
-                cmd.ExecuteNonQuery();
+                _dc.Connection.Open();
+                job job= _dc.jobs.Where(x=> x.job_id== UpdateJob.job_id).FirstOrDefault();
+                job = UpdateJob;
+                _dc.SubmitChanges();
             }
-            catch {
+            catch (Exception)
+            {
                 throw;
             }
-            finally {
-                Desconexion();
+            finally
+            {
+                _dc.Connection.Close();
             }
-
-
         }
     }
 }
