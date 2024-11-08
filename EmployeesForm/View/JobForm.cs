@@ -1,4 +1,5 @@
 ﻿using EmployeesForm.BBDDConection;
+using EmployeesForm.BBDDConection.Interfaces;
 using EmployeesForm.Model;
 using System;
 using System.Collections.Generic;
@@ -8,15 +9,16 @@ namespace EmployeesForm
 {
     public partial class JobForm : Form
     {
-        DalJob jobsData = new DalJob();
-        public JobForm()
+        private IDalJob _DalJob;
+        public JobForm(IDalJob dalJob)
         {
             InitializeComponent();
+            _DalJob = dalJob;
         }
         private void btAdd_Click(object sender, EventArgs e)
         {
             job job = GetJobData();
-            jobsData.Insert(job);
+            _DalJob.Insert(job);
             RefrescarLista();
         }
         //MostrarLista y modificar jobs
@@ -26,7 +28,7 @@ namespace EmployeesForm
         }
         private void RefrescarLista()
         {
-            dgvJob.DataSource = jobsData.GetAll();
+            dgvJob.DataSource = _DalJob.GetAll();
         }
         private job GetJobData()
         {
@@ -45,7 +47,7 @@ namespace EmployeesForm
                 jobSeleccionado.job_title= jobForm.job_title;
                 jobSeleccionado.min_salary= jobForm.min_salary;
                 jobSeleccionado.max_salary= jobForm.max_salary;
-                jobsData.Update(jobSeleccionado);
+                _DalJob.Update(jobSeleccionado);
                 RefrescarLista();
             }
             else

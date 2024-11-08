@@ -16,6 +16,8 @@ namespace EmployeesForm
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+        public static ServiceProvider ServiceProvider { get; private set; }
+
         [STAThread]
         static void Main()
         {
@@ -26,7 +28,9 @@ namespace EmployeesForm
                 .AddScoped<IDalEmploye, DalEmploye>()
                 .AddScoped<IDalDepartment, DalDepartment>()
                 .BuildServiceProvider();
-            Application.Run(new StarterForm());
+            //Application.Run(new StarterForm());
+            Application.Run(ServiceProvider.GetRequiredService<StarterForm>());
+
         }
     }
 }

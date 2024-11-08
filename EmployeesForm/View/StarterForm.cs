@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,8 @@ namespace EmployeesForm
 
         private void btnJob_Click(object sender, EventArgs e)
         {
-            JobForm jobForm = new JobForm();
+            Application.Run(ServiceProvider.GetRequiredService<JobForm>());
+
             jobForm.ShowDialog();
 
         }

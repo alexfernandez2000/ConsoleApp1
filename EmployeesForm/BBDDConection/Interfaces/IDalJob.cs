@@ -9,5 +9,8 @@ namespace EmployeesForm.BBDDConection.Interfaces
 {
     public interface IDalJob
     {
+       void Insert(job job);
+       List<job> GetAll();
+       void Update(job UpdateJob);
     }
 }
