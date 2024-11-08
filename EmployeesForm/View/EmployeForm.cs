@@ -49,8 +49,8 @@ namespace EmployeesForm
             
             if (dgvEmployees.SelectedRows.Count != 0)
             {
-                Employe selectedEmploye = dgvEmployees.SelectedRows[0].DataBoundItem as Employe;
-                Employe formEmploye = GetEmployeData();
+                employee selectedEmploye = dgvEmployees.SelectedRows[0].DataBoundItem as employee;
+                employee formEmploye = GetEmployeData();
                 if (formEmploye == null)
                     return;
                 formEmploye.employee_id = selectedEmploye.employee_id;
@@ -58,11 +58,11 @@ namespace EmployeesForm
             }
         }
 
-        private Employe GetEmployeData()
+        private employee GetEmployeData()
         {
             if (cbJob.SelectedItem != null && tbLastName.Text.Length>0 && tbEmail.Text.Length>0 && dtHireDate.Value!=null)
             {
-                Employe employe = new Employe();
+                employee employe = new employee();
                 employe.first_name = tbFirstName.Text;
                 employe.last_name = tbLastName.Text;
                 employe.email = tbEmail.Text;
@@ -70,14 +70,14 @@ namespace EmployeesForm
                 employe.hire_date = dtHireDate.Value;
                 employe.job_id = ((job)cbJob.SelectedItem).job_id;
                 employe.salary = numSalary.Value;
-                employe.manager_id = ((Employe)cbManager.SelectedItem) == null ? null : (int?)((Employe)cbManager.SelectedItem).employee_id;
-                employe.department_id = ((Department)cbDepartment.SelectedItem) == null ? null : (int?)((Department)cbDepartment.SelectedItem).department_id;
+                employe.manager_id = ((employee)cbManager.SelectedItem) == null ? null : (int?)((employee)cbManager.SelectedItem).employee_id;
+                employe.department_id = ((department)cbDepartment.SelectedItem) == null ? null : (int?)((department)cbDepartment.SelectedItem).department_id;
                 return employe;
             }
             MessageBox.Show("Missing data");
             return null;
         }
-        private void SetEmployeData(Employe employe)
+        private void SetEmployeData(employee employe)
         {
             tbFirstName.Text = employe.first_name;
             tbLastName.Text = employe.last_name;
@@ -87,14 +87,14 @@ namespace EmployeesForm
             cbJob.SelectedItem = cbJob.Items.OfType<job>().Where(x=>x.job_id==employe.job_id).FirstOrDefault();
             numSalary.Value = employe.salary;
             if (employe.manager_id != null)
-                cbManager.SelectedItem = cbManager.Items.OfType<Employe>().Where(x => x.employee_id == employe.manager_id).FirstOrDefault();
+                cbManager.SelectedItem = cbManager.Items.OfType<employee>().Where(x => x.employee_id == employe.manager_id).FirstOrDefault();
             if (employe.department_id != null)
-                cbDepartment.SelectedItem = cbDepartment.Items.OfType<Department>().Where(x => x.department_id == employe.department_id).FirstOrDefault();
+                cbDepartment.SelectedItem = cbDepartment.Items.OfType<department>().Where(x => x.department_id == employe.department_id).FirstOrDefault();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Employe formEmploye = GetEmployeData();
+            employee formEmploye = GetEmployeData();
             _dalEmploye.Insert(formEmploye);
         }
 
@@ -102,7 +102,7 @@ namespace EmployeesForm
         {
             if (dgvEmployees.SelectedRows.Count != 0)
             {
-                Employe employeEditar = dgvEmployees.SelectedRows[0].DataBoundItem as Employe;
+                employee employeEditar = dgvEmployees.SelectedRows[0].DataBoundItem as employee;
                 SetEmployeData(employeEditar);
             }
 

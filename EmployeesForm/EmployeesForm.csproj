@@ -73,8 +73,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeesDC.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Department.cs" />
-    <Compile Include="Model\Employe.cs" />
     <Compile Include="View\EmployeForm.cs">
       <SubType>Form</SubType>
     </Compile>

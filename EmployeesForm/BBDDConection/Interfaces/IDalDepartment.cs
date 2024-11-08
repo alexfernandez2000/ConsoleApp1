@@ -1,14 +1,9 @@
-﻿using EmployeesForm.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EmployeesForm.BBDDConection.Interfaces
 {
     public interface IDalDepartment 
     {
-        List<Department> GetAll();
+        List<department> GetAll();
     }
 }

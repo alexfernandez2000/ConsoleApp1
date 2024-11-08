@@ -1,4 +1,5 @@
-﻿using EmployeesForm.BBDDConection.Interfaces;
+﻿using EmployeesForm.BBDDConection;
+using EmployeesForm.BBDDConection.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,28 +11,19 @@ namespace EmployeesForm.Model.BBDDConection
 {
     public class DalDepartment : BBDDConnection,IDalDepartment
     {
+        EmployeesDC _dcEmployees;
+
         public DalDepartment()
         {
-            
+            _dcEmployees = new EmployeesDC();
         }
-        public List<Department> GetAll()
+        public List<department> GetAll()
         {
-            List<Department> departments = new List<Department>();
+            List<department> departments = new List<department>();
             try
             {
                 Conexion();
-                string sql = @"SELECT * FROM departments";
-                SqlCommand command = new SqlCommand(sql, Connection);
-                SqlDataReader records = command.ExecuteReader();
-                while (records.Read())
-                {
-                    int departmentId = records.GetInt32(0);
-                    string departmentName = records.GetString(1);
-                    int? locationId = records.IsDBNull(2) ? (int?)null : records.GetInt32(2);
-                    Department department = new Department(departmentId,departmentName,locationId);
-                    departments.Add(department);
-                }
-
+                departments = _dcEmployees.departments.ToList();
             }
             catch (Exception)
             {

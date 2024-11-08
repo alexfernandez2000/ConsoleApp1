@@ -9,8 +9,8 @@ namespace EmployeesForm.BBDDConection.Interfaces
 {
     public interface IDalEmploye
     {
-        void Insert(Employe employe);
-        void Update(Employe employe);
-        List<Employe> GetAll();
+        void Insert(employee employe);
+        void Update(employee employe);
+        List<employee> GetAll();
     }
 }

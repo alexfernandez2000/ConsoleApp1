@@ -14,10 +14,8 @@ namespace EmployeesForm.Model
 {
     public class DalJob : BBDDConnection,IDalJob
     {
-        EmployeesDC _dc;
         public DalJob()
         {
-            _dc = new EmployeesDC();
         }
         public void GetByIdDBContext(int id)
         {
@@ -29,7 +27,7 @@ namespace EmployeesForm.Model
         {
             try
             {
-                _dc.Connection.Open();
+                Conexion();
                 _dc.jobs.InsertOnSubmit(job);
                 _dc.SubmitChanges();
             }
@@ -39,7 +37,7 @@ namespace EmployeesForm.Model
             }
             finally
             {
-                _dc.Connection.Close();
+                Desconexion();
             }
         }
         public List<job> GetAll()
@@ -47,7 +45,7 @@ namespace EmployeesForm.Model
             List<job> jobs = new List<job>();
             try
             {
-                _dc.Connection.Open();
+                Conexion();
                 jobs=_dc.jobs.ToList();
             }
             catch (Exception)
@@ -56,7 +54,7 @@ namespace EmployeesForm.Model
             }
             finally
             {
-                _dc.Connection.Close();
+                Desconexion();
             }
 
             return jobs;
@@ -66,7 +64,7 @@ namespace EmployeesForm.Model
             List<job> jobs = new List<job>();
             try
             {
-                _dc.Connection.Open();
+                Conexion();
                 job job= _dc.jobs.Where(x=> x.job_id== UpdateJob.job_id).FirstOrDefault();
                 job = UpdateJob;
                 _dc.SubmitChanges();
@@ -77,7 +75,7 @@ namespace EmployeesForm.Model
             }
             finally
             {
-                _dc.Connection.Close();
+                Desconexion();
             }
         }
     }

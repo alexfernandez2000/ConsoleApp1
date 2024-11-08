@@ -1,4 +1,5 @@
-﻿using EmployeesForm.BBDDConection.Interfaces;
+﻿using EmployeesForm.BBDDConection;
+using EmployeesForm.BBDDConection.Interfaces;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,18 +8,17 @@ namespace EmployeesForm.Model
 {
     public class BBDDConnection : IBBDDConnection
     {
-       public SqlConnection Connection;
+       protected EmployeesDC _dc;
         public BBDDConnection()
         {
-            string connectionString = "Server=85.208.21.117,54321;Database=AlexFerEmployees;User Id=sa;Password=Sql#123456789;";
-            Connection = new SqlConnection(connectionString);
+            _dc = new EmployeesDC();
         }
         public void Conexion()
         {
                 try
                 {
-                if (Connection.State!=ConnectionState.Open)
-                    Connection.Open();
+                if (_dc.Connection.State!=ConnectionState.Open)
+                    _dc.Connection.Open();
                 }
                 catch (Exception ex)
                 {
@@ -30,8 +30,8 @@ namespace EmployeesForm.Model
         {
             try
             {
-                if (Connection.State!=ConnectionState.Closed)
-                    Connection.Close();
+                if (_dc.Connection.State!=ConnectionState.Closed)
+                    _dc.Connection.Close();
             }
             catch (Exception ex)
             {
