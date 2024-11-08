@@ -93,6 +93,7 @@
             this.dgvEmployees.RowTemplate.Height = 24;
             this.dgvEmployees.Size = new System.Drawing.Size(425, 271);
             this.dgvEmployees.TabIndex = 3;
+            this.dgvEmployees.SelectionChanged += new System.EventHandler(this.dgvEmployees_SelectionChanged);
             // 
             // label1
             // 

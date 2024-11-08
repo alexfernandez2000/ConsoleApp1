@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BBDDConection\DalDepartment.cs" />
-    <Compile Include="Model\BBDDConection\DalEmploye.cs" />
+    <Compile Include="BBDDConection\DalDepartment.cs" />
+    <Compile Include="BBDDConection\DalEmploye.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Employe.cs" />
     <Compile Include="View\EmployeForm.cs">
@@ -69,9 +69,9 @@
       <DependentUpon>JobForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Atributos\FormAtributes.cs" />
-    <Compile Include="Model\BBDDConection\BBDDConnection.cs" />
+    <Compile Include="BBDDConection\BBDDConnection.cs" />
     <Compile Include="Model\Job.cs" />
-    <Compile Include="Model\BBDDConection\DalJob.cs" />
+    <Compile Include="BBDDConection\DalJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\EmployeForm.resx">

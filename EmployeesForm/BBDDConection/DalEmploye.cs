@@ -50,19 +50,16 @@ namespace EmployeesForm.Model.BBDDConection
                 managerId.Value = employe.manager_id;
                 SqlParameter departmentId = new SqlParameter("@DepartmentId", SqlDbType.Int);
                 departmentId.Value = employe.department_id;
-                SqlParameter employeeId = new SqlParameter("@EmployeeId", SqlDbType.Int);
-                employeeId.Value = employe.employee_id;
 
                 cmd.Parameters.Add(firstName);
                 cmd.Parameters.Add(lastName);
+                cmd.Parameters.Add(email);
                 cmd.Parameters.Add(phoneNumber);
                 cmd.Parameters.Add(hireDate);
                 cmd.Parameters.Add(jobId);
                 cmd.Parameters.Add(salary);
                 cmd.Parameters.Add(managerId);
-                cmd.Parameters.Add(employeeId);
                 cmd.Parameters.Add(departmentId);
-                cmd.Parameters.Add(employeeId);
 
                 cmd.ExecuteNonQuery();
             }
@@ -84,14 +81,14 @@ namespace EmployeesForm.Model.BBDDConection
                 Conexion();
                 string sql = @"UPDATE [dbo].[employees]
    SET [first_name] = @FirstName,
-      ,[last_name] = @LastName,
-      ,[email] = @Email,
-      ,[phone_number] = @PhoneNumber,
-      ,[hire_date] = @HireDate,
-      ,[job_id] = @JobId,
-      ,[salary] = @Salary,
-      ,[manager_id] = @ManagerId,
-      ,[department_id] = @DepartmentId,
+      [last_name] = @LastName,
+      [email] = @Email,
+      [phone_number] = @PhoneNumber,
+      [hire_date] = @HireDate,
+      [job_id] = @JobId,
+      [salary] = @Salary,
+      [manager_id] = @ManagerId,
+      [department_id] = @DepartmentId
  WHERE employee_id = @EmployeeId
 ";
                 SqlCommand cmd = new SqlCommand(sql, Connection);
@@ -118,6 +115,7 @@ namespace EmployeesForm.Model.BBDDConection
 
                 cmd.Parameters.Add(firstName);
                 cmd.Parameters.Add(lastName);
+                cmd.Parameters.Add(email);
                 cmd.Parameters.Add(phoneNumber);
                 cmd.Parameters.Add(hireDate);
                 cmd.Parameters.Add(jobId);
@@ -125,7 +123,6 @@ namespace EmployeesForm.Model.BBDDConection
                 cmd.Parameters.Add(managerId);
                 cmd.Parameters.Add(employeeId);
                 cmd.Parameters.Add(departmentId);
-                cmd.Parameters.Add(employeeId);
 
                 cmd.ExecuteNonQuery();
             }
