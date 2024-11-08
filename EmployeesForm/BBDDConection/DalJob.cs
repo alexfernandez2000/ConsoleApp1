@@ -66,6 +66,9 @@ namespace EmployeesForm.Model
             {
                 Conexion();
                 job job= _dc.jobs.Where(x=> x.job_id== UpdateJob.job_id).FirstOrDefault();
+                if (job == null)
+                    return;
+
                 job = UpdateJob;
                 _dc.SubmitChanges();
             }

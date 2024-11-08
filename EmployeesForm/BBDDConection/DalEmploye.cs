@@ -39,6 +39,8 @@ namespace EmployeesForm.Model.BBDDConection
             {
                 Conexion();
                 employee employe = _dc.employees.Where(x=>x.employee_id == Employe.employee_id).FirstOrDefault();
+                if (employe == null)
+                    return;
                 employe = Employe;
 
                 _dc.SubmitChanges();
