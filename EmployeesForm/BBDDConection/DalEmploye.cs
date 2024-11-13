@@ -45,7 +45,7 @@ namespace EmployeesForm.Model.BBDDConection
 
                 _dc.SubmitChanges();
             }
-            catch
+            catch(Exception ex)
             {
                 throw;
             }

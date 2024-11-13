@@ -56,7 +56,6 @@ namespace EmployeesForm.Model
         }
         public void Update(job UpdateJob)
         {
-            List<job> jobs = new List<job>();
             try
             {
                 Conexion();

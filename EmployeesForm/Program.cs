@@ -28,8 +28,7 @@ namespace EmployeesForm
                 .AddScoped<IDalEmploye, DalEmploye>()
                 .AddScoped<IDalDepartment, DalDepartment>()
                 .BuildServiceProvider();
-            //Application.Run(new StarterForm());
-            Application.Run(ServiceProvider.GetRequiredService<StarterForm>());
+            Application.Run(new StarterForm());
 
         }
     }

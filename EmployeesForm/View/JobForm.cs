@@ -9,16 +9,17 @@ namespace EmployeesForm
 {
     public partial class JobForm : Form
     {
-        private IDalJob _DalJob;
-        public JobForm(IDalJob dalJob)
+        private DalJob _dalJob;
+
+        public JobForm()
         {
             InitializeComponent();
-            _DalJob = dalJob;
+            _dalJob = new DalJob();
         }
         private void btAdd_Click(object sender, EventArgs e)
         {
             job job = GetJobData();
-            _DalJob.Insert(job);
+            _dalJob.Insert(job);
             RefrescarLista();
         }
         //MostrarLista y modificar jobs
@@ -28,7 +29,7 @@ namespace EmployeesForm
         }
         private void RefrescarLista()
         {
-            dgvJob.DataSource = _DalJob.GetAll();
+            dgvJob.DataSource = _dalJob.GetAll();
         }
         private job GetJobData()
         {
@@ -47,7 +48,7 @@ namespace EmployeesForm
                 jobSeleccionado.job_title= jobForm.job_title;
                 jobSeleccionado.min_salary= jobForm.min_salary;
                 jobSeleccionado.max_salary= jobForm.max_salary;
-                _DalJob.Update(jobSeleccionado);
+                _dalJob.Update(jobSeleccionado);
                 RefrescarLista();
             }
             else
